@@ -2,5 +2,7 @@ services:
   - type: web
     name: resume-builder
     env: node
-    buildCommand: "npm install"
+    plan: free
+    buildCommand: "npm ci --omit=dev"
     startCommand: "npm start"
+    autoDeploy: true
