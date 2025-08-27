@@ -11,7 +11,8 @@ import {
   CheckIcon,
   XMarkIcon,
   TrashIcon,
-  KeyIcon
+  KeyIcon,
+  ArrowLeftIcon
 } from '@heroicons/react/24/outline'
 
 const UserProfile = () => {
@@ -173,44 +174,45 @@ const UserProfile = () => {
       <div className="min-h-screen bg-gray-50">
         {/* Header */}
         <div className="bg-white border-b border-gray-200">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div className="flex items-center justify-between">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
               <div>
-                <h1 className="text-3xl font-bold text-gray-900">Profile Settings</h1>
-                <p className="mt-2 text-gray-600">Manage your account information and preferences</p>
+                <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Profile Settings</h1>
+                <p className="mt-1 sm:mt-2 text-sm sm:text-base text-gray-600">Manage your account information and preferences</p>
               </div>
               <button
                 onClick={() => navigate('/dashboard')}
-                className="text-gray-600 hover:text-orange-500 font-medium transition-colors"
+                className="flex items-center text-gray-600 hover:text-orange-500 font-medium transition-colors text-sm sm:text-base"
               >
-                ← Back to Dashboard
+                <ArrowLeftIcon className="w-4 h-4 mr-2" />
+                Back to Dashboard
               </button>
             </div>
           </div>
         </div>
 
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
           {/* Success/Error Messages */}
           {success && (
-            <div className="mb-6 bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg flex items-center">
-              <CheckIcon className="w-5 h-5 mr-2" />
+            <div className="mb-4 sm:mb-6 bg-green-50 border border-green-200 text-green-700 px-3 sm:px-4 py-3 rounded-lg flex items-center text-sm sm:text-base">
+              <CheckIcon className="w-4 h-4 sm:w-5 sm:h-5 mr-2 flex-shrink-0" />
               {success}
             </div>
           )}
 
           {error && (
-            <div className="mb-6 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg flex items-center">
-              <XMarkIcon className="w-5 h-5 mr-2" />
+            <div className="mb-4 sm:mb-6 bg-red-50 border border-red-200 text-red-700 px-3 sm:px-4 py-3 rounded-lg flex items-center text-sm sm:text-base">
+              <XMarkIcon className="w-4 h-4 sm:w-5 sm:h-5 mr-2 flex-shrink-0" />
               {error}
             </div>
           )}
 
           <div className="bg-white rounded-lg shadow">
             {/* Profile Picture Section */}
-            <div className="p-6 border-b border-gray-200">
-              <div className="flex items-center space-x-6">
-                <div className="relative">
-                  <div className="w-24 h-24 rounded-full bg-gray-200 flex items-center justify-center overflow-hidden">
+            <div className="p-4 sm:p-6 border-b border-gray-200">
+              <div className="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <div className="relative self-center sm:self-start">
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gray-200 flex items-center justify-center overflow-hidden">
                     {previewImage ? (
                       <img 
                         src={previewImage} 
@@ -218,12 +220,12 @@ const UserProfile = () => {
                         className="w-full h-full object-cover"
                       />
                     ) : (
-                      <UserIcon className="w-12 h-12 text-gray-400" />
+                      <UserIcon className="w-10 h-10 sm:w-12 sm:h-12 text-gray-400" />
                     )}
                   </div>
                   {isEditing && (
-                    <label className="absolute bottom-0 right-0 bg-orange-500 text-white p-2 rounded-full cursor-pointer hover:bg-orange-600 transition-colors">
-                      <CameraIcon className="w-4 h-4" />
+                    <label className="absolute bottom-0 right-0 bg-orange-500 text-white p-1.5 sm:p-2 rounded-full cursor-pointer hover:bg-orange-600 transition-colors">
+                      <CameraIcon className="w-3 h-3 sm:w-4 sm:h-4" />
                       <input
                         type="file"
                         accept="image/*"
@@ -233,12 +235,12 @@ const UserProfile = () => {
                     </label>
                   )}
                 </div>
-                <div>
-                  <h2 className="text-xl font-semibold text-gray-900">
+                <div className="text-center sm:text-left">
+                  <h2 className="text-lg sm:text-xl font-semibold text-gray-900">
                     {profile?.fullName || `${profile?.firstName} ${profile?.lastName}`}
                   </h2>
-                  <p className="text-gray-600">{profile?.email}</p>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm sm:text-base text-gray-600">{profile?.email}</p>
+                  <p className="text-xs sm:text-sm text-gray-500">
                     Member since {new Date(profile?.createdAt).toLocaleDateString()}
                   </p>
                 </div>
@@ -246,8 +248,8 @@ const UserProfile = () => {
             </div>
 
             {/* Profile Form */}
-            <div className="p-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="p-4 sm:p-6">
+              <div className="grid grid-cols-1 gap-4 sm:gap-6">
                 {/* First Name */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -292,10 +294,10 @@ const UserProfile = () => {
                     Email Address
                   </label>
                   <div className="flex items-center text-gray-900 py-2">
-                    <EnvelopeIcon className="w-4 h-4 mr-2 text-gray-400" />
-                    {profile?.email}
+                    <EnvelopeIcon className="w-4 h-4 mr-2 text-gray-400 flex-shrink-0" />
+                    <span className="text-sm sm:text-base break-all">{profile?.email}</span>
                     {profile?.isEmailVerified && (
-                      <span className="ml-2 inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                      <span className="ml-2 inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 flex-shrink-0">
                         Verified
                       </span>
                     )}
@@ -307,12 +309,14 @@ const UserProfile = () => {
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Password
                   </label>
-                  <div className="flex items-center text-gray-900 py-2">
-                    <KeyIcon className="w-4 h-4 mr-2 text-gray-400" />
-                    <span className="text-gray-600">••••••••</span>
+                  <div className="flex flex-col sm:flex-row sm:items-center text-gray-900 py-2 space-y-2 sm:space-y-0">
+                    <div className="flex items-center">
+                      <KeyIcon className="w-4 h-4 mr-2 text-gray-400 flex-shrink-0" />
+                      <span className="text-gray-600">••••••••</span>
+                    </div>
                     <button
                       onClick={() => navigate('/change-password')}
-                      className="ml-3 text-sm text-orange-600 hover:text-orange-700 font-medium"
+                      className="text-sm text-orange-600 hover:text-orange-700 font-medium sm:ml-3"
                     >
                       Change Password
                     </button>
@@ -335,14 +339,14 @@ const UserProfile = () => {
                     />
                   ) : (
                     <div className="flex items-center text-gray-900 py-2">
-                      <PhoneIcon className="w-4 h-4 mr-2 text-gray-400" />
-                      {profile?.mobileNumber || 'Not provided'}
+                      <PhoneIcon className="w-4 h-4 mr-2 text-gray-400 flex-shrink-0" />
+                      <span className="text-sm sm:text-base">{profile?.mobileNumber || 'Not provided'}</span>
                     </div>
                   )}
                 </div>
 
                 {/* Address */}
-                <div className="md:col-span-2">
+                <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Address
                   </label>
@@ -357,39 +361,39 @@ const UserProfile = () => {
                     />
                   ) : (
                     <div className="flex items-start text-gray-900 py-2">
-                      <MapPinIcon className="w-4 h-4 mr-2 text-gray-400 mt-0.5" />
-                      {(() => {
-                        const address = profile?.address
-                        if (!address) return 'Not provided'
-                        
-                        // Handle address object
-                        if (typeof address === 'object' && address !== null) {
-                          const parts = []
-                          if (address.street) parts.push(address.street)
-                          if (address.city) parts.push(address.city)
-                          if (address.state) parts.push(address.state)
-                          if (address.zipCode) parts.push(address.zipCode)
-                          if (address.country) parts.push(address.country)
-                          return parts.length > 0 ? parts.join(', ') : 'Not provided'
-                        }
-                        
-                        // Handle string address
-                        return address || 'Not provided'
-                      })()}
+                      <MapPinIcon className="w-4 h-4 mr-2 text-gray-400 mt-0.5 flex-shrink-0" />
+                      <span className="text-sm sm:text-base">
+                        {(() => {
+                          const address = profile?.address
+                          if (!address) return 'Not provided'
+                          
+                          // Handle address object
+                          if (typeof address === 'object' && address !== null) {
+                            const parts = []
+                            if (address.street) parts.push(address.street)
+                            if (address.city) parts.push(address.city)
+                            if (address.state) parts.push(address.state)
+                            if (address.zipCode) parts.push(address.zipCode)
+                            if (address.country) parts.push(address.country)
+                            return parts.length > 0 ? parts.join(', ') : 'Not provided'
+                          }
+                          
+                          // Handle string address
+                          return address || 'Not provided'
+                        })()}
+                      </span>
                     </div>
                   )}
                 </div>
-
-
               </div>
 
               {/* Action Buttons */}
-              <div className="mt-8 flex justify-end space-x-4">
+              <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row sm:justify-end space-y-3 sm:space-y-0 sm:space-x-4">
                 {isEditing ? (
                   <>
                     <button
                       onClick={handleCancel}
-                      className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
+                      className="w-full sm:w-auto px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
                       disabled={isSaving}
                     >
                       Cancel
@@ -397,7 +401,7 @@ const UserProfile = () => {
                     <button
                       onClick={handleSave}
                       disabled={isSaving}
-                      className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 transition-colors disabled:opacity-50"
+                      className="w-full sm:w-auto px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 transition-colors disabled:opacity-50"
                     >
                       {isSaving ? 'Saving...' : 'Save Changes'}
                     </button>
@@ -405,7 +409,7 @@ const UserProfile = () => {
                 ) : (
                   <button
                     onClick={() => setIsEditing(true)}
-                    className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 transition-colors"
+                    className="w-full sm:w-auto px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 transition-colors"
                   >
                     Edit Profile
                   </button>
@@ -415,17 +419,17 @@ const UserProfile = () => {
           </div>
 
           {/* Delete Account Section */}
-          <div className="mt-8 bg-white rounded-lg shadow">
-            <div className="p-6 border-b border-gray-200">
-              <h2 className="text-xl font-semibold text-gray-900">Delete Account</h2>
-              <p className="mt-2 text-gray-600">
+          <div className="mt-6 sm:mt-8 bg-white rounded-lg shadow">
+            <div className="p-4 sm:p-6 border-b border-gray-200">
+              <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Delete Account</h2>
+              <p className="mt-1 sm:mt-2 text-sm text-gray-600">
                 Once you delete your account, there is no going back. Please be certain.
               </p>
             </div>
-            <div className="p-6">
+            <div className="p-4 sm:p-6">
               {showDeleteConfirm ? (
                 <div className="space-y-4">
-                  <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                  <div className="bg-red-50 border border-red-200 rounded-lg p-3 sm:p-4">
                     <div className="flex">
                       <div className="flex-shrink-0">
                         <TrashIcon className="h-5 w-5 text-red-400" />
@@ -442,10 +446,10 @@ const UserProfile = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="flex space-x-4">
+                  <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
                     <button
                       onClick={() => setShowDeleteConfirm(false)}
-                      className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
+                      className="w-full sm:w-auto px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
                       disabled={isDeleting}
                     >
                       Cancel
@@ -453,7 +457,7 @@ const UserProfile = () => {
                     <button
                       onClick={handleDeleteAccount}
                       disabled={isDeleting}
-                      className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors disabled:opacity-50"
+                      className="w-full sm:w-auto px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors disabled:opacity-50"
                     >
                       {isDeleting ? 'Deleting...' : 'Yes, Delete My Account'}
                     </button>
@@ -462,7 +466,7 @@ const UserProfile = () => {
               ) : (
                 <button
                   onClick={handleDeleteAccount}
-                  className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors"
+                  className="w-full sm:w-auto px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors"
                 >
                   <TrashIcon className="w-4 h-4 inline mr-2" />
                   Delete Account

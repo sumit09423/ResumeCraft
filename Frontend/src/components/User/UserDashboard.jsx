@@ -201,7 +201,7 @@ const UserDashboard = () => {
       rejected: 'bg-red-100 text-red-800'
     }
     return (
-      <span className={`px-3 py-1 text-xs font-medium rounded ${statusClasses[status] || statusClasses.pending}`}>
+      <span className={`px-2 sm:px-3 py-1 text-xs font-medium rounded-full whitespace-nowrap ${statusClasses[status] || statusClasses.pending}`}>
         {status.charAt(0).toUpperCase() + status.slice(1)}
       </span>
     )
@@ -259,10 +259,10 @@ const UserDashboard = () => {
       <div className="min-h-screen bg-gray-50">
         {/* Welcome Section */}
         <div className="bg-white border-b border-gray-200">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div className="flex items-center space-x-4">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-4 text-center sm:text-left">
               {/* Profile Picture */}
-              <div className="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center overflow-hidden">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gray-200 flex items-center justify-center overflow-hidden flex-shrink-0">
                 {profilePicture ? (
                   <img 
                     src={profilePicture} 
@@ -270,14 +270,14 @@ const UserDashboard = () => {
                     className="w-full h-full object-cover"
                   />
                 ) : (
-                  <UserIcon className="w-8 h-8 text-gray-400" />
+                  <UserIcon className="w-8 h-8 sm:w-10 sm:h-10 text-gray-400" />
                 )}
               </div>
-              <div>
-                <h1 className="text-3xl font-bold text-gray-900">
+              <div className="flex-1 min-w-0">
+                <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 leading-tight">
                   Welcome back, {currentUser?.firstName && currentUser?.lastName ? `${currentUser.firstName} ${currentUser.lastName}` : currentUser?.firstName || 'User'}!
                 </h1>
-                <p className="mt-2 text-gray-600">
+                <p className="mt-2 text-sm sm:text-base text-gray-600">
                   Manage your resumes and track your progress
                 </p>
               </div>
@@ -302,20 +302,20 @@ const UserDashboard = () => {
         {/* Resumes Section */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="bg-white rounded-lg shadow">
-            <div className="px-6 py-4 border-b border-gray-200">
-              <div className="flex justify-between items-center mb-4">
+            <div className="px-4 sm:px-6 py-4 border-b border-gray-200">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 space-y-3 sm:space-y-0">
                 <h2 className="text-xl font-semibold text-gray-900">My Resumes</h2>
-                <div className="flex space-x-3">
+                <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3 w-full sm:w-auto">
                   <button
                     onClick={() => setShowFilters(!showFilters)}
-                    className="flex items-center px-3 py-2 text-sm text-gray-600 hover:text-gray-800 border border-gray-300 rounded-md hover:bg-gray-50"
+                    className="flex items-center justify-center px-3 py-2 text-sm text-gray-600 hover:text-gray-800 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors"
                   >
                     <FunnelIcon className="w-4 h-4 mr-2" />
                     Filters
                   </button>
                   <Link 
                     to="/resume-builder" 
-                    className="flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors"
+                    className="flex items-center justify-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors"
                   >
                     <PlusIcon className="w-4 h-4 mr-2" />
                     Create Resume
@@ -326,13 +326,13 @@ const UserDashboard = () => {
               {/* Filters */}
               {showFilters && (
                 <div className="bg-gray-50 rounded-lg p-4 mb-4">
-                  <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">Status</label>
                       <select
                         value={filters.status}
                         onChange={(e) => setFilters({ ...filters, status: e.target.value })}
-                        className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                       >
                         <option value="">All Status</option>
                         <option value="pending">Pending</option>
@@ -345,7 +345,7 @@ const UserDashboard = () => {
                       <select
                         value={filters.template}
                         onChange={(e) => setFilters({ ...filters, template: e.target.value })}
-                        className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                       >
                         <option value="">All Templates</option>
                         <option value="modern">Modern</option>
@@ -359,7 +359,7 @@ const UserDashboard = () => {
                       <select
                         value={filters.sortBy}
                         onChange={(e) => setFilters({ ...filters, sortBy: e.target.value })}
-                        className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                       >
                         <option value="createdAt">Created Date</option>
                         <option value="updatedAt">Updated Date</option>
@@ -371,7 +371,7 @@ const UserDashboard = () => {
                       <select
                         value={filters.sortOrder}
                         onChange={(e) => setFilters({ ...filters, sortOrder: e.target.value })}
-                        className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                       >
                         <option value="desc">Newest First</option>
                         <option value="asc">Oldest First</option>
@@ -383,10 +383,10 @@ const UserDashboard = () => {
             </div>
             
             {isLoading ? (
-              <div className="p-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="p-4 sm:p-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                   {[1, 2, 3].map(i => (
-                    <div key={i} className="bg-white border border-gray-200 rounded-lg shadow-sm p-6">
+                    <div key={i} className="bg-white border border-gray-200 rounded-lg shadow-sm p-4 sm:p-6">
                       <div className="animate-pulse">
                         <div className="h-4 bg-gray-200 rounded w-3/4 mb-4"></div>
                         <div className="h-3 bg-gray-200 rounded w-1/2 mb-2"></div>
@@ -397,7 +397,7 @@ const UserDashboard = () => {
                 </div>
               </div>
             ) : resumes.length === 0 ? (
-              <div className="p-8 text-center">
+              <div className="p-6 sm:p-8 text-center">
                 <div className="text-gray-400 text-6xl mb-4">📄</div>
                 <h3 className="text-lg font-medium text-gray-900 mb-2">No resumes yet</h3>
                 <p className="text-gray-600 mb-6">Create your first resume to get started</p>
@@ -406,77 +406,78 @@ const UserDashboard = () => {
                 </Link>
               </div>
             ) : (
-              <div className="p-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="p-4 sm:p-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                   {resumes.map((resume) => (
-                    <div key={resume.id || resume._id} className="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                      <div className="p-6">
+                    <div key={resume.id || resume._id} className="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+                      <div className="p-4 sm:p-6">
                         <div className="flex items-start justify-between mb-4">
-                          <div className="flex items-center">
-                            <span className="text-2xl mr-2">{getTemplateIcon(resume.template)}</span>
-                            <div>
-                              <h3 className="font-semibold text-gray-900 truncate">
+                          <div className="flex items-center min-w-0 flex-1 mr-3">
+                            <span className="text-xl sm:text-2xl mr-2 flex-shrink-0">{getTemplateIcon(resume.template)}</span>
+                            <div className="min-w-0 flex-1">
+                              <h3 className="font-semibold text-gray-900 truncate text-sm sm:text-base leading-tight">
                                 {resume.title || `${resume.firstName} ${resume.lastName}`}
                               </h3>
-                              <p className="text-sm text-gray-500 capitalize">{resume.template || 'modern'} Template</p>
+                              <p className="text-xs sm:text-sm text-gray-500 capitalize truncate mt-1">{resume.template || 'modern'} Template</p>
                             </div>
                           </div>
-                          {getStatusBadge(resume.status)}
+                          <div className="flex-shrink-0">
+                            {getStatusBadge(resume.status)}
+                          </div>
                         </div>
                         
-                        <div className="text-sm text-gray-600 mb-4">
-                          <p>Created: {new Date(resume.createdAt).toLocaleDateString()}</p>
-                          <p>Updated: {new Date(resume.updatedAt || resume.createdAt).toLocaleDateString()}</p>
+                        <div className="text-xs sm:text-sm text-gray-600 mb-4 space-y-1">
+                          <p className="truncate">Created: {new Date(resume.createdAt).toLocaleDateString()}</p>
+                          <p className="truncate">Updated: {new Date(resume.updatedAt || resume.createdAt).toLocaleDateString()}</p>
                         </div>
 
-                        <div className="flex justify-end mb-4">
+                        <div className="flex justify-end">
                           <div className="relative dropdown-container">
                             <button
                               onClick={() => setOpenDropdown(openDropdown === resume.id ? null : resume.id)}
-                              className="inline-flex items-center px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+                              className="inline-flex items-center px-2 sm:px-3 py-1.5 sm:py-2 border border-gray-300 rounded-md shadow-sm bg-white text-xs sm:text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-colors"
                             >
-                              Actions
-                              <svg className="-mr-1 ml-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                              <span className="hidden sm:inline">Actions</span>
+                              <span className="sm:hidden">•••</span>
+                              <svg className="hidden sm:block -mr-1 ml-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                 <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                               </svg>
                             </button>
 
                             {/* Dropdown menu */}
                             {openDropdown === resume.id && (
-                              <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
+                              <div className="absolute right-0 mt-2 w-40 sm:w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
                                 <div className="py-1" role="menu" aria-orientation="vertical">
                                   <Link
                                     to={`/resume/${resume.id || resume._id}`}
-                                    className="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
+                                    className="flex items-center w-full px-3 sm:px-4 py-2 text-xs sm:text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
                                     role="menuitem"
                                   >
-                                    <EyeIcon className="mr-3 h-4 w-4 text-blue-500" />
-                                    View
+                                    <EyeIcon className="mr-2 sm:mr-3 h-3 w-3 sm:h-4 sm:w-4 text-blue-500 flex-shrink-0" />
+                                    <span className="truncate">View</span>
                                   </Link>
                                   <Link
                                     to={`/resume-builder/${resume.id || resume._id}`}
-                                    className="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
+                                    className="flex items-center w-full px-3 sm:px-4 py-2 text-xs sm:text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
                                     role="menuitem"
                                   >
-                                    <PencilIcon className="mr-3 h-4 w-4 text-green-500" />
-                                    Edit
+                                    <PencilIcon className="mr-2 sm:mr-3 h-3 w-3 sm:h-4 sm:w-4 text-green-500 flex-shrink-0" />
+                                    <span className="truncate">Edit</span>
                                   </Link>
 
                                   <button
                                     onClick={() => handleDeleteResume(resume.id || resume._id)}
-                                    className="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
+                                    className="flex items-center w-full px-3 sm:px-4 py-2 text-xs sm:text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
                                     role="menuitem"
                                   >
-                                    <TrashIcon className="mr-3 h-4 w-4 text-red-500" />
-                                    Delete
+                                    <TrashIcon className="mr-2 sm:mr-3 h-3 w-3 sm:h-4 sm:w-4 text-red-500 flex-shrink-0" />
+                                    <span className="truncate">Delete</span>
                                   </button>
                                 </div>
                               </div>
                             )}
                           </div>
                         </div>
-
-
                       </div>
                     </div>
                   ))}

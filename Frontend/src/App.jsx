@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import { authService, adminService } from './api'
+import Header from './components/Layout/Header'
 import Login from './components/UserAuth/Login'
 import Register from './components/UserAuth/Register'
 import EmailVerification from './components/UserAuth/EmailVerification'
@@ -66,19 +67,6 @@ function App() {
   ]
 
   const LandingPage = () => {
-    const isAuthenticated = authService.isAuthenticated()
-    const isAdmin = adminService.isAdmin()
-    const currentUser = authService.getCurrentUser()
-    const adminUser = adminService.getAdminUser()
-
-    const handleLogout = () => {
-      if (isAdmin) {
-        adminService.clearAdminData()
-      } else {
-        authService.clearAuthData()
-      }
-      window.location.href = '/'
-    }
 
     return (
     <div className="min-h-screen bg-white overflow-hidden relative">
@@ -110,45 +98,7 @@ function App() {
       </div>
 
       {/* Header */}
-      <header className="relative z-10 bg-white/95 backdrop-blur-sm border-b border-gray-100 sticky top-0">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center border border-orange-300">
-                <span className="text-white font-bold text-sm">R</span>
-              </div>
-              <h1 className="text-xl font-bold text-gray-900">
-                ResumeCraft
-              </h1>
-            </div>
-            <nav className="hidden md:flex space-x-8">
-              <a href="#features" className="text-gray-600 hover:text-orange-500 font-medium transition-colors text-sm">Features</a>
-            </nav>
-            <div className="flex items-center space-x-4">
-              {isAuthenticated || isAdmin ? (
-                <div className="flex items-center space-x-4">
-                  <span className="text-sm text-gray-600">
-                    Welcome, {isAdmin ? (adminUser?.name || 'Admin') : (currentUser?.firstName && currentUser?.lastName ? `${currentUser.firstName} ${currentUser.lastName}` : currentUser?.firstName || 'User')}
-                  </span>
-                  <Link to="/dashboard" className="btn-primary text-sm px-4 py-2">Dashboard</Link>
-                  <button
-                    onClick={handleLogout}
-                    className="text-gray-600 hover:text-orange-500 font-medium transition-colors text-sm"
-                  >
-                    Logout
-                  </button>
-                </div>
-              ) : (
-                <>
-                  <Link to="/login" className="text-gray-600 hover:text-orange-500 font-medium transition-colors text-sm">Sign In</Link>
-                  <Link to="/admin/login" className="text-gray-600 hover:text-orange-500 font-medium transition-colors text-sm">Admin Login</Link>
-                  <Link to="/register" className="btn-primary text-sm px-4 py-2">Get Started</Link>
-                </>
-              )}
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <section className="relative z-10 pt-20 pb-16 px-4 sm:px-6 lg:px-8">
@@ -162,7 +112,7 @@ function App() {
             customize your content, and download your perfect resume instantly.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            {isAuthenticated ? (
+            {authService.isAuthenticated() ? (
               <>
                 <Link to="/dashboard" className="btn-primary text-base px-6 py-3">Go to Dashboard</Link>
                 <Link to="/resume/create" className="btn-secondary text-base px-6 py-3">Create New Resume</Link>
@@ -208,7 +158,7 @@ function App() {
           <p className="text-lg text-gray-600 mb-8">
             Join thousands of professionals who have created winning resumes with ResumeCraft
           </p>
-          {isAuthenticated ? (
+          {authService.isAuthenticated() ? (
             <Link to="/dashboard" className="btn-primary text-base px-6 py-3">Go to Dashboard</Link>
           ) : (
             <Link to="/register" className="btn-primary text-base px-6 py-3">Create Your Resume Now</Link>
@@ -234,7 +184,6 @@ function App() {
             <div>
               <h4 className="text-gray-900 font-semibold mb-3 text-sm">Product</h4>
               <ul className="space-y-2 text-gray-600 text-sm">
-                <li><a href="#" className="hover:text-orange-500 transition-colors">Features</a></li>
                 <li><a href="#" className="hover:text-orange-500 transition-colors">Templates</a></li>
                 <li><a href="#" className="hover:text-orange-500 transition-colors">Pricing</a></li>
               </ul>

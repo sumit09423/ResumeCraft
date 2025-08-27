@@ -42,6 +42,23 @@
     background-color: #FF5C00;
   }
   
+  /* Mobile-first responsive utilities */
+  .container-mobile {
+    @apply px-3 sm:px-4 lg:px-8;
+  }
+  
+  .text-mobile {
+    @apply text-xs sm:text-sm;
+  }
+  
+  .spacing-mobile {
+    @apply space-x-2 sm:space-x-3;
+  }
+  
+  .padding-mobile {
+    @apply p-3 sm:p-4 lg:p-6;
+  }
+  
   .text-custom-orange {
     color: #FF5C00;
   }

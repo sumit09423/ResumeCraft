@@ -6,6 +6,7 @@ import AdminLayout from '../Admin/Layout/AdminLayout'
 import { getTemplateComponent } from './templates'
 import ToastContainer from '../Common/ToastContainer'
 import PDFDownloadButton from '../Common/PDFDownloadButton'
+import { PencilIcon, TrashIcon } from '@heroicons/react/24/outline'
 
 const ResumeViewer = () => {
   const { id } = useParams()
@@ -302,102 +303,129 @@ const ResumeViewer = () => {
   const TemplateComponent = getTemplateComponent(resume.template)
 
   const MainContent = () => (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Header */}
-        <div className="bg-white rounded-lg shadow p-6 mb-8">
-          <div className="flex justify-between items-start">
-            <div className="flex items-center">
-              <span className="text-3xl mr-3">{getTemplateIcon(resume.template)}</span>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
+      {/* Header */}
+      <div className="mb-6 sm:mb-8">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center space-y-4 sm:space-y-0">
+          <div>
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Resume Preview</h1>
+            <p className="mt-2 text-sm sm:text-base text-gray-600">
+              {isAdminView ? 'Review resume details and status' : 'View your professional resume'}
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+            {!isAdminView && (
+              <button
+                onClick={() => navigate(`/resume-builder/${id}`)}
+                className="inline-flex items-center justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition-colors"
+              >
+                <PencilIcon className="h-4 w-4 mr-2" />
+                Edit Resume
+              </button>
+            )}
+            
+            <PDFDownloadButton
+              resumeId={id}
+              template={getBackendTemplate(resume.template)}
+              method="POST"
+              className="px-4 py-2 text-sm font-medium transition-colors"
+              onSuccess={() => console.log('PDF downloaded successfully')}
+              onError={(error) => console.error('PDF download failed:', error)}
+            >
+              Download PDF
+            </PDFDownloadButton>
+
+            {!isAdminView && (
+              <button
+                onClick={handleDelete}
+                className="inline-flex items-center justify-center px-4 py-2 border border-red-300 shadow-sm text-sm font-medium rounded-md text-red-700 bg-white hover:bg-red-50 transition-colors"
+              >
+                <TrashIcon className="h-4 w-4 mr-2" />
+                Delete
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Resume Info */}
+      <div className="bg-white rounded-lg shadow mb-6 sm:mb-8">
+        <div className="p-4 sm:p-6 border-b border-gray-200">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-3 sm:space-y-0">
+            <div className="flex items-center space-x-3">
+              <span className="text-2xl sm:text-3xl">{getTemplateIcon(resume.template)}</span>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">{resume.title}</h1>
-                <p className="text-gray-600 capitalize">{resume.template} Template</p>
-                <div className="flex items-center mt-2 space-x-4 text-sm text-gray-500">
-                  <span>Created: {new Date(resume.createdAt).toLocaleDateString()}</span>
-                  <span>Updated: {new Date(resume.updatedAt).toLocaleDateString()}</span>
-                  {resume.adminApproval && (
-                    <span className={`px-3 py-1 rounded text-xs ${resume.adminApproval.status === 'approved' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}`}>
-                      {resume.adminApproval.status} by Admin
-                    </span>
-                  )}
-                </div>
+                <h2 className="text-lg sm:text-xl font-semibold text-gray-900">
+                  {resume.title || `${resume.firstName} ${resume.lastName}`}
+                </h2>
+                <p className="text-sm text-gray-600 capitalize">{resume.template} Template</p>
               </div>
             </div>
-            <div className="flex items-center space-x-3">
-                {getStatusBadge(resume.status)}
-                
-                {/* PDF Download Button - Always visible */}
-                <PDFDownloadButton
-                  resumeId={id}
-                  template={getBackendTemplate(resume.template)}
-                  method="POST"
-                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600"
-                  onSuccess={() => console.log('PDF downloaded successfully')}
-                  onError={(error) => console.error('PDF download failed:', error)}
-                >
-                  Download PDF
-                </PDFDownloadButton>
-                
-                {/* Only show Actions dropdown for user view, not admin view */}
-                {!isAdminView && (
-                  <div className="relative dropdown-container">
-                    <button
-                      onClick={() => setShowActions(!showActions)}
-                      className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
-                    >
-                      Actions
-                      <svg className="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                      </svg>
-                    </button>
-
-                    {/* Dropdown menu */}
-                    {showActions && (
-                      <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
-                        <div className="py-1" role="menu" aria-orientation="vertical">
-                          <button
-                            onClick={handleEdit}
-                            className="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
-                            role="menuitem"
-                          >
-                            <svg className="mr-3 h-4 w-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                            </svg>
-                            Edit Resume
-                          </button>
-
-                          <button
-                            onClick={handleDelete}
-                            className="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
-                            role="menuitem"
-                          >
-                            <svg className="mr-3 h-4 w-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                            </svg>
-                            Delete
-                          </button>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                )}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
+              {getStatusBadge(resume.status)}
+              {isAdminView && (
+                <div className="flex space-x-2">
+                  <button
+                    onClick={() => handleApprove()}
+                    disabled={isUpdating}
+                    className="px-3 py-1 text-xs font-medium text-green-700 bg-green-100 rounded-full hover:bg-green-200 disabled:opacity-50 transition-colors"
+                  >
+                    Approve
+                  </button>
+                  <button
+                    onClick={() => handleReject()}
+                    disabled={isUpdating}
+                    className="px-3 py-1 text-xs font-medium text-red-700 bg-red-100 rounded-full hover:bg-red-200 disabled:opacity-50 transition-colors"
+                  >
+                    Reject
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>
-
-        {/* Error Message */}
-        {error && (
-          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded mb-6">
-            {error}
+        
+        <div className="p-4 sm:p-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+            <div>
+              <span className="text-gray-500">Created:</span>
+              <span className="ml-2 text-gray-900">{new Date(resume.createdAt).toLocaleDateString()}</span>
+            </div>
+            <div>
+              <span className="text-gray-500">Updated:</span>
+              <span className="ml-2 text-gray-900">{new Date(resume.updatedAt || resume.createdAt).toLocaleDateString()}</span>
+            </div>
+            {resume.user && (
+              <div>
+                <span className="text-gray-500">Owner:</span>
+                <span className="ml-2 text-gray-900">{resume.user.firstName} {resume.user.lastName}</span>
+              </div>
+            )}
+            {resume.adminApproval && (
+              <div>
+                <span className="text-gray-500">Reviewed by:</span>
+                <span className="ml-2 text-gray-900">{resume.adminApproval.reviewedBy}</span>
+              </div>
+            )}
           </div>
-        )}
+        </div>
+      </div>
 
-        {/* Resume Preview */}
-        <div className="bg-white rounded-lg shadow overflow-hidden">
-          <div className="p-6 border-b border-gray-200">
-            <h2 className="text-lg font-semibold text-gray-900">Resume Preview</h2>
-            <p className="text-sm text-gray-600">This is how your resume will appear to others</p>
-          </div>
-          <div className="p-8">
+      {/* Error Message */}
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded mb-6">
+          {error}
+        </div>
+      )}
+
+      {/* Resume Preview */}
+      <div className="bg-white rounded-lg shadow overflow-hidden">
+        <div className="p-4 sm:p-6 border-b border-gray-200">
+          <h2 className="text-lg font-semibold text-gray-900">Resume Preview</h2>
+          <p className="text-sm text-gray-600">This is how your resume will appear to others</p>
+        </div>
+        <div className="p-4 sm:p-6 lg:p-8 overflow-x-auto">
+          <div className="min-w-0">
             {TemplateComponent ? (
               <TemplateComponent 
                 data={resume.templateData || resume}
@@ -410,17 +438,18 @@ const ResumeViewer = () => {
             )}
           </div>
         </div>
+      </div>
 
-        {/* Admin Comments */}
-        {resume.adminApproval && resume.adminApproval.comments && (
-          <div className="mt-8 bg-blue-50 border border-blue-200 rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-blue-900 mb-2">Admin Feedback</h3>
-            <p className="text-blue-800">{resume.adminApproval.comments}</p>
-            <div className="mt-2 text-sm text-blue-600">
-              Reviewed by {resume.adminApproval.reviewedBy} on {new Date(resume.adminApproval.reviewedAt).toLocaleDateString()}
-            </div>
+      {/* Admin Comments */}
+      {resume.adminApproval && resume.adminApproval.comments && (
+        <div className="mt-6 sm:mt-8 bg-blue-50 border border-blue-200 rounded-lg p-4 sm:p-6">
+          <h3 className="text-lg font-semibold text-blue-900 mb-2">Admin Feedback</h3>
+          <p className="text-blue-800 text-sm sm:text-base">{resume.adminApproval.comments}</p>
+          <div className="mt-2 text-sm text-blue-600">
+            Reviewed by {resume.adminApproval.reviewedBy} on {new Date(resume.adminApproval.reviewedAt).toLocaleDateString()}
           </div>
-        )}
+        </div>
+      )}
 
         {/* Delete Confirmation Modal - Only show for user view */}
         {showDeleteModal && !isAdminView && (

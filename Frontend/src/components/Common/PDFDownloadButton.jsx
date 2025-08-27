@@ -49,7 +49,7 @@ const PDFDownloadButton = ({
     <button
       onClick={handleDownload}
       disabled={isGenerating || !resumeId}
-      className={`inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors ${className}`}
+      className={`inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors ${className}`}
     >
       <ArrowDownTrayIcon className="h-4 w-4 mr-2" />
       {isGenerating ? 'Generating PDF...' : children || 'Download PDF'}

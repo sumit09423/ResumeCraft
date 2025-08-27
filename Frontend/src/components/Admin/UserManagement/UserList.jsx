@@ -330,57 +330,60 @@ const UserList = () => {
     <AdminLayout title="User Management">
       <div className="space-y-6">
         {/* Header */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">Users</h1>
-            <p className="mt-1 text-sm text-gray-600">
+            <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Users</h1>
+            <p className="mt-1 text-xs sm:text-sm text-gray-600">
               Manage all registered users and their accounts
             </p>
           </div>
-          <div className="flex items-center space-x-3">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
             {selectedUsers.length > 0 && (
               <>
                 <button
                   onClick={() => handleBulkStatusUpdate(true)}
                   disabled={loadingStates.bulkUpdating}
-                  className={`inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50 disabled:cursor-not-allowed ${
+                  className={`inline-flex items-center px-3 sm:px-4 py-2 border border-transparent text-xs sm:text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50 disabled:cursor-not-allowed ${
                     loadingStates.bulkUpdating ? 'cursor-not-allowed' : ''
                   }`}
                 >
                   {loadingStates.bulkUpdating ? (
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-1 sm:mr-2"></div>
                   ) : (
-                    <CheckIcon className="h-4 w-4 mr-2" />
+                    <CheckIcon className="h-4 w-4 mr-1 sm:mr-2" />
                   )}
-                  {loadingStates.bulkUpdating ? 'Updating...' : `Activate Selected (${selectedUsers.length})`}
+                  <span className="hidden sm:inline">{loadingStates.bulkUpdating ? 'Updating...' : `Activate Selected (${selectedUsers.length})`}</span>
+                  <span className="sm:hidden">{loadingStates.bulkUpdating ? 'Updating...' : `Activate (${selectedUsers.length})`}</span>
                 </button>
                 <button
                   onClick={() => handleBulkStatusUpdate(false)}
                   disabled={loadingStates.bulkUpdating}
-                  className={`inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed ${
+                  className={`inline-flex items-center px-3 sm:px-4 py-2 border border-transparent text-xs sm:text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed ${
                     loadingStates.bulkUpdating ? 'cursor-not-allowed' : ''
                   }`}
                 >
                   {loadingStates.bulkUpdating ? (
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-1 sm:mr-2"></div>
                   ) : (
-                    <XMarkIcon className="h-4 w-4 mr-2" />
+                    <XMarkIcon className="h-4 w-4 mr-1 sm:mr-2" />
                   )}
-                  {loadingStates.bulkUpdating ? 'Updating...' : `Deactivate Selected (${selectedUsers.length})`}
+                  <span className="hidden sm:inline">{loadingStates.bulkUpdating ? 'Updating...' : `Deactivate Selected (${selectedUsers.length})`}</span>
+                  <span className="sm:hidden">{loadingStates.bulkUpdating ? 'Updating...' : `Deactivate (${selectedUsers.length})`}</span>
                 </button>
                 <button
                   onClick={handleBulkDeleteClick}
                   disabled={loadingStates.bulkDeleting}
-                  className={`inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:opacity-50 disabled:cursor-not-allowed ${
+                  className={`inline-flex items-center px-3 sm:px-4 py-2 border border-transparent text-xs sm:text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:opacity-50 disabled:cursor-not-allowed ${
                     loadingStates.bulkDeleting ? 'cursor-not-allowed' : ''
                   }`}
                 >
                   {loadingStates.bulkDeleting ? (
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-1 sm:mr-2"></div>
                   ) : (
-                    <TrashIcon className="h-4 w-4 mr-2" />
+                    <TrashIcon className="h-4 w-4 mr-1 sm:mr-2" />
                   )}
-                  {loadingStates.bulkDeleting ? 'Deleting...' : `Delete Selected (${selectedUsers.length})`}
+                  <span className="hidden sm:inline">{loadingStates.bulkDeleting ? 'Deleting...' : `Delete Selected (${selectedUsers.length})`}</span>
+                  <span className="sm:hidden">{loadingStates.bulkDeleting ? 'Deleting...' : `Delete (${selectedUsers.length})`}</span>
                 </button>
               </>
             )}
@@ -389,7 +392,7 @@ const UserList = () => {
 
         {/* Search and Filters */}
         <div className="bg-white p-4 rounded-lg shadow">
-          <div className="flex items-center space-x-4">
+          <div className="flex flex-col sm:flex-row sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
             <div className="flex-1 relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <svg className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -400,28 +403,30 @@ const UserList = () => {
                 type="text"
                 placeholder="Search users by name or email..."
                 onChange={(e) => handleSearch(e.target.value)}
-                className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-orange-500 focus:border-orange-500 sm:text-sm"
+                className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-orange-500 focus:border-orange-500 text-sm"
               />
             </div>
-            <select
-              value={filters.role}
-              onChange={(e) => handleFilterChange({ ...filters, role: e.target.value })}
-              className="block w-32 px-3 py-2 border border-gray-300 rounded-md leading-5 bg-white focus:outline-none focus:ring-1 focus:ring-orange-500 focus:border-orange-500 sm:text-sm"
-            >
-              <option value="">All Roles</option>
-              <option value="user">User</option>
-              <option value="admin">Admin</option>
-              <option value="super_admin">Super Admin</option>
-            </select>
-            <select
-              value={filters.isActive}
-              onChange={(e) => handleFilterChange({ ...filters, isActive: e.target.value })}
-              className="block w-32 px-3 py-2 border border-gray-300 rounded-md leading-5 bg-white focus:outline-none focus:ring-1 focus:ring-orange-500 focus:border-orange-500 sm:text-sm"
-            >
-              <option value="">All Status</option>
-              <option value="true">Active</option>
-              <option value="false">Inactive</option>
-            </select>
+            <div className="flex space-x-2 sm:space-x-0 sm:flex-col sm:space-y-2">
+              <select
+                value={filters.role}
+                onChange={(e) => handleFilterChange({ ...filters, role: e.target.value })}
+                className="block w-full sm:w-32 px-3 py-2 border border-gray-300 rounded-md leading-5 bg-white focus:outline-none focus:ring-1 focus:ring-orange-500 focus:border-orange-500 text-sm"
+              >
+                <option value="">All Roles</option>
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+                <option value="super_admin">Super Admin</option>
+              </select>
+              <select
+                value={filters.isActive}
+                onChange={(e) => handleFilterChange({ ...filters, isActive: e.target.value })}
+                className="block w-full sm:w-32 px-3 py-2 border border-gray-300 rounded-md leading-5 bg-white focus:outline-none focus:ring-1 focus:ring-orange-500 focus:border-orange-500 text-sm"
+              >
+                <option value="">All Status</option>
+                <option value="true">Active</option>
+                <option value="false">Inactive</option>
+              </select>
+            </div>
           </div>
         </div>
 

@@ -438,8 +438,8 @@ const ResumeBuilder = () => {
         return (
           <div className="space-y-6">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">Resume Title & Style</h2>
-              <p className="text-gray-600">Give your resume a meaningful title and choose a template</p>
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">Resume Title & Style</h2>
+              <p className="text-sm sm:text-base text-gray-600">Give your resume a meaningful title and choose a template</p>
             </div>
             
             {/* Resume Title */}
@@ -459,7 +459,7 @@ const ResumeBuilder = () => {
                   <input
                     {...field}
                     type="text"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                     placeholder="e.g., John Doe - Software Engineer Resume"
                   />
                 )}
@@ -469,18 +469,18 @@ const ResumeBuilder = () => {
             
             <div>
               <h3 className="text-lg font-medium text-gray-900 mb-3">Choose Your Resume Style</h3>
-              <p className="text-gray-600 mb-4">Select a template that best represents your professional style</p>
+              <p className="text-sm text-gray-600 mb-4">Select a template that best represents your professional style</p>
             </div>
             
             <Controller
               name="resumeStyle"
               control={control}
               render={({ field }) => (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                   {resumeStyles.map((style) => (
                     <div
                       key={style.id}
-                      className={`border-2 rounded-lg p-4 cursor-pointer transition-all duration-300 hover-lift ${
+                      className={`border-2 rounded-lg p-3 sm:p-4 cursor-pointer transition-all duration-300 hover-lift ${
                         field.value === style.id
                           ? 'border-orange-500 bg-orange-50 shadow-lg glow-orange'
                           : 'border-gray-200 hover:border-orange-300 hover:shadow-md'
@@ -488,7 +488,7 @@ const ResumeBuilder = () => {
                       onClick={() => field.onChange(style.id)}
                     >
                       <div className="text-center">
-                        <div className={`w-full h-32 rounded-lg mb-3 flex items-center justify-center transition-all duration-300 ${
+                        <div className={`w-full h-24 sm:h-32 rounded-lg mb-2 sm:mb-3 flex items-center justify-center transition-all duration-300 ${
                           style.id === 'modern' 
                             ? 'bg-gradient-to-br from-gray-800 to-gray-900'
                             : style.id === 'professional'
@@ -498,7 +498,7 @@ const ResumeBuilder = () => {
                             : 'bg-gradient-to-br from-gray-600 to-gray-800'
                         }`}>
                           <div className="text-center text-white">
-                            <div className={`w-12 h-16 bg-white rounded shadow-sm mx-auto mb-2 ${
+                            <div className={`w-8 sm:w-12 h-10 sm:h-16 bg-white rounded shadow-sm mx-auto mb-1 sm:mb-2 ${
                               style.id === 'modern' ? 'shadow-gray-200' 
                               : style.id === 'professional' ? 'shadow-blue-200'
                               : style.id === 'creative' ? 'shadow-purple-200'
@@ -507,7 +507,7 @@ const ResumeBuilder = () => {
                             <span className="text-white text-xs font-medium">{style.name}</span>
                           </div>
                         </div>
-                        <h3 className="font-semibold text-gray-900 text-base mb-1">{style.name}</h3>
+                        <h3 className="font-semibold text-gray-900 text-sm sm:text-base mb-1">{style.name}</h3>
                         <p className="text-gray-600 text-xs leading-tight">{style.description}</p>
                       </div>
                     </div>
@@ -521,11 +521,11 @@ const ResumeBuilder = () => {
         return (
           <div className="space-y-6">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">Personal Information</h2>
-              <p className="text-gray-600">Tell us about yourself</p>
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">Personal Information</h2>
+              <p className="text-sm sm:text-base text-gray-600">Tell us about yourself</p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
                 <Controller
@@ -536,7 +536,7 @@ const ResumeBuilder = () => {
                     <input
                       {...field}
                       type="text"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                       placeholder="Enter your first name"
                     />
                   )}
@@ -554,7 +554,7 @@ const ResumeBuilder = () => {
                     <input
                       {...field}
                       type="text"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                       placeholder="Enter your last name"
                     />
                   )}
@@ -578,7 +578,7 @@ const ResumeBuilder = () => {
                     <input
                       {...field}
                       type="email"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                       placeholder="your.email@example.com"
                     />
                   )}
@@ -602,7 +602,7 @@ const ResumeBuilder = () => {
                     <input
                       {...field}
                       type="tel"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                       placeholder="+1 (555) 123-4567"
                     />
                   )}
@@ -610,7 +610,7 @@ const ResumeBuilder = () => {
                 {errors.mobileNumber && <p className="text-red-500 text-sm mt-1">{errors.mobileNumber.message}</p>}
               </div>
               
-              <div className="md:col-span-2">
+              <div className="sm:col-span-2">
                 <label className="block text-sm font-medium text-gray-700 mb-2">Location</label>
                 <Controller
                   name="location"
@@ -619,7 +619,7 @@ const ResumeBuilder = () => {
                     <input
                       {...field}
                       type="text"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                       placeholder="e.g., New York, NY or Remote"
                     />
                   )}
@@ -630,8 +630,8 @@ const ResumeBuilder = () => {
             {/* Address Section */}
             <div className="border-t pt-6">
               <h3 className="text-lg font-medium text-gray-900 mb-4">Address Information</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="md:col-span-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                <div className="sm:col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-2">Street Address</label>
                   <Controller
                     name="address.street"
@@ -640,7 +640,7 @@ const ResumeBuilder = () => {
                       <input
                         {...field}
                         type="text"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                         placeholder="123 Main Street"
                       />
                     )}
@@ -656,7 +656,7 @@ const ResumeBuilder = () => {
                       <input
                         {...field}
                         type="text"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                         placeholder="New York"
                       />
                     )}
@@ -672,7 +672,7 @@ const ResumeBuilder = () => {
                       <input
                         {...field}
                         type="text"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                         placeholder="NY"
                       />
                     )}
@@ -688,7 +688,7 @@ const ResumeBuilder = () => {
                       <input
                         {...field}
                         type="text"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                         placeholder="10001"
                       />
                     )}
@@ -704,7 +704,7 @@ const ResumeBuilder = () => {
                       <input
                         {...field}
                         type="text"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                         placeholder="United States"
                       />
                     )}
@@ -722,7 +722,7 @@ const ResumeBuilder = () => {
                   <textarea
                     {...field}
                     rows={4}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                     placeholder="Write a compelling professional summary..."
                   />
                 )}
@@ -733,10 +733,10 @@ const ResumeBuilder = () => {
       case 3:
         return (
           <div className="space-y-6">
-            <div className="flex justify-between items-center">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center space-y-3 sm:space-y-0">
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">Work Experience</h2>
-                <p className="text-gray-600">Add your professional experience</p>
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">Work Experience</h2>
+                <p className="text-sm sm:text-base text-gray-600">Add your professional experience</p>
               </div>
               <button
                 type="button"
@@ -749,26 +749,26 @@ const ResumeBuilder = () => {
                   description: '',
                   achievements: []
                 })}
-                className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600"
+                className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 text-sm sm:text-base transition-colors"
               >
                 Add Experience
               </button>
             </div>
             
             {watchedValues.experiences?.map((exp, index) => (
-              <div key={index} className="border border-gray-200 rounded-lg p-4">
-                <div className="flex justify-between items-start mb-4">
+              <div key={index} className="border border-gray-200 rounded-lg p-4 sm:p-6">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4 space-y-2 sm:space-y-0">
                   <h3 className="text-lg font-medium text-gray-900">Experience {index + 1}</h3>
                   <button
                     type="button"
                     onClick={() => removeArrayItem('experiences', index)}
-                    className="text-red-600 hover:text-red-800"
+                    className="text-red-600 hover:text-red-800 text-sm sm:text-base self-start sm:self-auto"
                   >
                     Remove
                   </button>
                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Company *</label>
                     <Controller
@@ -779,7 +779,7 @@ const ResumeBuilder = () => {
                         <input
                           {...field}
                           type="text"
-                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                           placeholder="Enter company name"
                         />
                       )}
@@ -798,7 +798,7 @@ const ResumeBuilder = () => {
                         <input
                           {...field}
                           type="text"
-                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                           placeholder="Enter your role/title"
                         />
                       )}
@@ -817,7 +817,7 @@ const ResumeBuilder = () => {
                         <input
                           {...field}
                           type="date"
-                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                         />
                       )}
                     />
@@ -835,7 +835,7 @@ const ResumeBuilder = () => {
                           {...field}
                           type="date"
                           disabled={exp.current}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base disabled:bg-gray-100"
                         />
                       )}
                     />
@@ -851,7 +851,7 @@ const ResumeBuilder = () => {
                       <textarea
                         {...field}
                         rows={3}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                         placeholder="Describe your role and responsibilities..."
                       />
                     )}
@@ -860,7 +860,7 @@ const ResumeBuilder = () => {
 
                 {/* Technologies Section */}
                 <div className="mt-4">
-                  <div className="flex justify-between items-center mb-2">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2 space-y-2 sm:space-y-0">
                     <label className="block text-sm font-medium text-gray-700">Technologies Used</label>
                     <div className="flex gap-2">
                       <input
@@ -869,12 +869,12 @@ const ResumeBuilder = () => {
                         onChange={(e) => setNewTechnology(e.target.value)}
                         onKeyPress={(e) => e.key === 'Enter' && handleAddTechnology(index)}
                         placeholder="Enter technology (e.g., React, Node.js, AWS)"
-                        className="px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm"
+                        className="flex-1 px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm"
                       />
                       <button
                         type="button"
                         onClick={() => handleAddTechnology(index)}
-                        className="text-sm text-orange-600 hover:text-orange-800"
+                        className="text-sm text-orange-600 hover:text-orange-800 px-2 py-1 whitespace-nowrap"
                       >
                         + Add
                       </button>
@@ -883,14 +883,14 @@ const ResumeBuilder = () => {
                   <div className="flex flex-wrap gap-2">
                     {exp.technologies?.map((tech, techIndex) => (
                       <div key={techIndex} className="flex items-center bg-purple-100 text-purple-800 px-3 py-1 rounded text-sm">
-                        <span>{tech}</span>
+                        <span className="truncate max-w-32">{tech}</span>
                         <button
                           type="button"
                           onClick={() => {
                             const newTechnologies = exp.technologies.filter((_, i) => i !== techIndex)
                             updateArrayItem('experiences', index, 'technologies', newTechnologies)
                           }}
-                          className="ml-1 text-purple-600 hover:text-purple-800 font-bold"
+                          className="ml-1 text-purple-600 hover:text-purple-800 font-bold flex-shrink-0"
                         >
                           ×
                         </button>
@@ -905,10 +905,10 @@ const ResumeBuilder = () => {
       case 4:
         return (
           <div className="space-y-6">
-            <div className="flex justify-between items-center">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center space-y-3 sm:space-y-0">
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">Projects</h2>
-                <p className="text-gray-600">Showcase your portfolio projects</p>
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">Projects</h2>
+                <p className="text-sm sm:text-base text-gray-600">Showcase your portfolio projects</p>
               </div>
               <button
                 type="button"
@@ -920,26 +920,26 @@ const ResumeBuilder = () => {
                   liveUrl: '',
                   screenshots: []
                 })}
-                className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600"
+                className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 text-sm sm:text-base transition-colors"
               >
                 Add Project
               </button>
             </div>
             
             {watchedValues.projects?.map((project, index) => (
-              <div key={index} className="border border-gray-200 rounded-lg p-4">
-                <div className="flex justify-between items-start mb-4">
+              <div key={index} className="border border-gray-200 rounded-lg p-4 sm:p-6">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4 space-y-2 sm:space-y-0">
                   <h3 className="text-lg font-medium text-gray-900">Project {index + 1}</h3>
                   <button
                     type="button"
                     onClick={() => removeArrayItem('projects', index)}
-                    className="text-red-600 hover:text-red-800"
+                    className="text-red-600 hover:text-red-800 text-sm sm:text-base self-start sm:self-auto"
                   >
                     Remove
                   </button>
                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Project Name *</label>
                     <Controller
@@ -950,7 +950,7 @@ const ResumeBuilder = () => {
                         <input
                           {...field}
                           type="text"
-                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                           placeholder="Enter project name"
                         />
                       )}
@@ -968,7 +968,7 @@ const ResumeBuilder = () => {
                         <input
                           {...field}
                           type="text"
-                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                           placeholder="React, Node.js, MongoDB..."
                         />
                       )}
@@ -985,14 +985,14 @@ const ResumeBuilder = () => {
                       <textarea
                         {...field}
                         rows={3}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                         placeholder="Describe your project..."
                       />
                     )}
                   />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">GitHub URL</label>
                     <Controller
@@ -1014,7 +1014,7 @@ const ResumeBuilder = () => {
                           <input
                             {...field}
                             type="url"
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                             placeholder="https://github.com/username/project"
                           />
                           {fieldState.error && (
@@ -1045,7 +1045,7 @@ const ResumeBuilder = () => {
                           <input
                             {...field}
                             type="url"
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                             placeholder="https://your-project.com"
                           />
                           {fieldState.error && (
@@ -1064,7 +1064,7 @@ const ResumeBuilder = () => {
                   {/* Upload Error Display */}
                   {uploadErrors[index] && (
                     <div className="mb-3 p-3 bg-red-50 border border-red-200 rounded-lg flex items-center">
-                      <svg className="w-5 h-5 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-red-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
                       </svg>
                       <span className="text-red-700 text-sm">{uploadErrors[index]}</span>
@@ -1106,13 +1106,13 @@ const ResumeBuilder = () => {
                   {/* Display uploaded screenshots */}
                   {watchedValues.projects?.[index]?.screenshots && watchedValues.projects[index].screenshots.length > 0 && (
                     <div className="mt-4">
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
                         {watchedValues.projects[index].screenshots.map((screenshot, screenshotIndex) => (
                           <div key={screenshotIndex} className="relative group">
                             <img
                               src={screenshot}
                               alt={`Screenshot ${screenshotIndex + 1}`}
-                              className="w-full h-24 object-cover rounded border"
+                              className="w-full h-20 sm:h-24 object-cover rounded border"
                               onError={(e) => {
                                 e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik04MCAxMDBDODAgODkuNTQ0NCA4OC41NDQ0IDgxIDEwMCA4MUMxMTAuNDU2IDgxIDExOSA4OS41NDQ0IDExOSAxMDBDMTE5IDExMC40NTYgMTEwLjQ1NiAxMTkgMTAwIDExOUM4OC41NDQ0IDExOSA4MCAxMTAuNDU2IDgwIDEwMFoiIGZpbGw9IiM5Q0EzQUYiLz4KPHBhdGggZD0iTTEwMCAxMzVDMTEwLjQ1NiAxMzUgMTE5IDEyNi40NTYgMTE5IDExNkMxMTkgMTA1LjU0NCAxMTAuNDU2IDk3IDEwMCA5N0M4OC41NDQ0IDk3IDgwIDEwNS41NDQgODAgMTE2QzgwIDEyNi40NTYgODguNTQ0NCAxMzUgMTAwIDEzNVoiIGZpbGw9IiM5Q0EzQUYiLz4KPC9zdmc+'
                               }}
@@ -1120,9 +1120,9 @@ const ResumeBuilder = () => {
                             <button
                               type="button"
                               onClick={() => removeScreenshot(index, screenshotIndex)}
-                              className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs hover:bg-red-600 opacity-0 group-hover:opacity-100 transition-opacity"
+                              className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center text-xs hover:bg-red-600 opacity-0 group-hover:opacity-100 transition-opacity"
                             >
-                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                               </svg>
                             </button>
@@ -1143,23 +1143,23 @@ const ResumeBuilder = () => {
         return (
           <div className="space-y-6">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">Skills</h2>
-              <p className="text-gray-600">Add your technical and professional skills</p>
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">Skills</h2>
+              <p className="text-sm sm:text-base text-gray-600">Add your technical and professional skills</p>
             </div>
             
-            <div className="flex gap-2 mb-6">
+            <div className="flex flex-col sm:flex-row gap-2 mb-6">
               <input
                 type="text"
                 value={newSkill}
                 onChange={(e) => setNewSkill(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleAddSkill()}
                 placeholder="Enter skill name (e.g., JavaScript, React, Node.js)"
-                className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
               />
               <button
                 type="button"
                 onClick={handleAddSkill}
-                className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600"
+                className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 text-sm sm:text-base transition-colors whitespace-nowrap"
               >
                 Add Skill
               </button>
@@ -1168,12 +1168,12 @@ const ResumeBuilder = () => {
             {watchedValues.skills?.length > 0 && (
               <div className="flex flex-wrap gap-2">
                 {watchedValues.skills.map((skill, index) => (
-                  <div key={index} className="flex items-center bg-orange-100 text-orange-800 px-3 py-1 rounded">
-                    <span className="text-sm font-medium">{skill.name}</span>
+                  <div key={index} className="flex items-center bg-orange-100 text-orange-800 px-3 py-1 rounded text-sm">
+                    <span className="text-sm font-medium truncate max-w-32">{skill.name}</span>
                     <button
                       type="button"
                       onClick={() => removeArrayItem('skills', index)}
-                      className="ml-2 text-orange-600 hover:text-orange-800 font-bold"
+                      className="ml-2 text-orange-600 hover:text-orange-800 font-bold flex-shrink-0"
                     >
                       ×
                     </button>
@@ -1184,7 +1184,7 @@ const ResumeBuilder = () => {
             
             {(!watchedValues.skills || watchedValues.skills.length === 0) && (
               <div className="text-center py-8 text-gray-500">
-                <p>No skills added yet. Add your first skill above!</p>
+                <p className="text-sm sm:text-base">No skills added yet. Add your first skill above!</p>
               </div>
             )}
           </div>
@@ -1193,27 +1193,27 @@ const ResumeBuilder = () => {
         return (
           <div className="space-y-6">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">Additional Information</h2>
-              <p className="text-gray-600">Add education, languages, certifications, hobbies and social media links</p>
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">Additional Information</h2>
+              <p className="text-sm sm:text-base text-gray-600">Add education, languages, certifications, hobbies and social media links</p>
             </div>
             
             {/* Languages */}
             <div>
               <h3 className="text-lg font-medium text-gray-900 mb-4">Languages</h3>
               
-              <div className="flex gap-2 mb-6">
+              <div className="flex flex-col sm:flex-row gap-2 mb-6">
                 <input
                   type="text"
                   value={newLanguage}
                   onChange={(e) => setNewLanguage(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && handleAddLanguage()}
                   placeholder="Enter language name (e.g., Spanish, French, German)"
-                  className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                  className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                 />
                 <button
                   type="button"
                   onClick={handleAddLanguage}
-                  className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600"
+                  className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 text-sm sm:text-base transition-colors whitespace-nowrap"
                 >
                   Add Language
                 </button>
@@ -1222,12 +1222,12 @@ const ResumeBuilder = () => {
               {watchedValues.languages?.length > 0 && (
                 <div className="flex flex-wrap gap-2">
                   {watchedValues.languages.map((lang, index) => (
-                    <div key={index} className="flex items-center bg-blue-100 text-blue-800 px-3 py-1 rounded">
-                      <span className="text-sm font-medium">{lang.name}</span>
+                    <div key={index} className="flex items-center bg-blue-100 text-blue-800 px-3 py-1 rounded text-sm">
+                      <span className="text-sm font-medium truncate max-w-32">{lang.name}</span>
                       <button
                         type="button"
                         onClick={() => removeArrayItem('languages', index)}
-                        className="ml-2 text-blue-600 hover:text-blue-800 font-bold"
+                        className="ml-2 text-blue-600 hover:text-blue-800 font-bold flex-shrink-0"
                       >
                         ×
                       </button>
@@ -1238,7 +1238,7 @@ const ResumeBuilder = () => {
               
               {(!watchedValues.languages || watchedValues.languages.length === 0) && (
                 <div className="text-center py-4 text-gray-500">
-                  <p>No languages added yet. Add your first language above!</p>
+                  <p className="text-sm sm:text-base">No languages added yet. Add your first language above!</p>
                 </div>
               )}
             </div>
@@ -1247,19 +1247,19 @@ const ResumeBuilder = () => {
             <div>
               <h3 className="text-lg font-medium text-gray-900 mb-4">Hobbies & Interests</h3>
               
-              <div className="flex gap-2 mb-6">
+              <div className="flex flex-col sm:flex-row gap-2 mb-6">
                 <input
                   type="text"
                   value={newHobby}
                   onChange={(e) => setNewHobby(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && handleAddHobby()}
                   placeholder="Enter hobby name (e.g., Reading, Swimming, Photography)"
-                  className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                  className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                 />
                 <button
                   type="button"
                   onClick={handleAddHobby}
-                  className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600"
+                  className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 text-sm sm:text-base transition-colors whitespace-nowrap"
                 >
                   Add Hobby
                 </button>
@@ -1268,12 +1268,12 @@ const ResumeBuilder = () => {
               {watchedValues.hobbies?.length > 0 && (
                 <div className="flex flex-wrap gap-2">
                   {watchedValues.hobbies.map((hobby, index) => (
-                    <div key={index} className="flex items-center bg-green-100 text-green-800 px-3 py-1 rounded">
-                      <span className="text-sm font-medium">{hobby.name}</span>
+                    <div key={index} className="flex items-center bg-green-100 text-green-800 px-3 py-1 rounded text-sm">
+                      <span className="text-sm font-medium truncate max-w-32">{hobby.name}</span>
                       <button
                         type="button"
                         onClick={() => removeArrayItem('hobbies', index)}
-                        className="ml-2 text-green-600 hover:text-green-800 font-bold"
+                        className="ml-2 text-green-600 hover:text-green-800 font-bold flex-shrink-0"
                       >
                         ×
                       </button>
@@ -1284,14 +1284,14 @@ const ResumeBuilder = () => {
               
               {(!watchedValues.hobbies || watchedValues.hobbies.length === 0) && (
                 <div className="text-center py-4 text-gray-500">
-                  <p>No hobbies added yet. Add your first hobby above!</p>
+                  <p className="text-sm sm:text-base">No hobbies added yet. Add your first hobby above!</p>
                 </div>
               )}
             </div>
             
             {/* Education */}
             <div>
-              <div className="flex justify-between items-center mb-4">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 space-y-3 sm:space-y-0">
                 <h3 className="text-lg font-medium text-gray-900">Education</h3>
                 <button
                   type="button"
@@ -1304,26 +1304,26 @@ const ResumeBuilder = () => {
                     gpa: '',
                     description: ''
                   })}
-                  className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600"
+                  className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 text-sm sm:text-base transition-colors"
                 >
                   Add Education
                 </button>
               </div>
               
               {watchedValues.education?.map((edu, index) => (
-                <div key={index} className="border border-gray-200 rounded-lg p-4 mb-4">
-                  <div className="flex justify-between items-start mb-4">
+                <div key={index} className="border border-gray-200 rounded-lg p-4 sm:p-6 mb-4">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4 space-y-2 sm:space-y-0">
                     <h4 className="font-medium text-gray-900">Education {index + 1}</h4>
                     <button
                       type="button"
                       onClick={() => removeArrayItem('education', index)}
-                      className="text-red-600 hover:text-red-800"
+                      className="text-red-600 hover:text-red-800 text-sm sm:text-base self-start sm:self-auto"
                     >
                       Remove
                     </button>
                   </div>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">Institution *</label>
                       <Controller
@@ -1334,7 +1334,7 @@ const ResumeBuilder = () => {
                           <input
                             {...field}
                             type="text"
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                             placeholder="University/College name"
                           />
                         )}
@@ -1353,7 +1353,7 @@ const ResumeBuilder = () => {
                           <input
                             {...field}
                             type="text"
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                             placeholder="e.g., Bachelor of Science"
                           />
                         )}
@@ -1372,7 +1372,7 @@ const ResumeBuilder = () => {
                           <input
                             {...field}
                             type="text"
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                             placeholder="e.g., Computer Science"
                           />
                         )}
@@ -1393,7 +1393,7 @@ const ResumeBuilder = () => {
                             step="0.01"
                             min="0"
                             max="4"
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                             placeholder="3.8"
                           />
                         )}
@@ -1409,7 +1409,7 @@ const ResumeBuilder = () => {
                           <input
                             {...field}
                             type="date"
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                           />
                         )}
                       />
@@ -1426,7 +1426,7 @@ const ResumeBuilder = () => {
                           <input
                             {...field}
                             type="date"
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                           />
                         )}
                       />
@@ -1441,7 +1441,7 @@ const ResumeBuilder = () => {
                         <textarea
                           {...field}
                           rows={3}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                           placeholder="Brief description of your education, achievements, relevant coursework..."
                         />
                       )}
@@ -1453,7 +1453,7 @@ const ResumeBuilder = () => {
             
             {/* Certifications */}
             <div>
-              <div className="flex justify-between items-center mb-4">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 space-y-3 sm:space-y-0">
                 <h3 className="text-lg font-medium text-gray-900">Certifications</h3>
                 <button
                   type="button"
@@ -1465,26 +1465,26 @@ const ResumeBuilder = () => {
                     credentialId: '',
                     url: ''
                   })}
-                  className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600"
+                  className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 text-sm sm:text-base transition-colors"
                 >
                   Add Certification
                 </button>
               </div>
               
               {watchedValues.certifications?.map((cert, index) => (
-                <div key={index} className="border border-gray-200 rounded-lg p-4 mb-4">
-                  <div className="flex justify-between items-start mb-4">
+                <div key={index} className="border border-gray-200 rounded-lg p-4 sm:p-6 mb-4">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4 space-y-2 sm:space-y-0">
                     <h4 className="font-medium text-gray-900">Certification {index + 1}</h4>
                     <button
                       type="button"
                       onClick={() => removeArrayItem('certifications', index)}
-                      className="text-red-600 hover:text-red-800"
+                      className="text-red-600 hover:text-red-800 text-sm sm:text-base self-start sm:self-auto"
                     >
                       Remove
                     </button>
                   </div>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">Certification Name *</label>
                       <Controller
@@ -1495,7 +1495,7 @@ const ResumeBuilder = () => {
                           <input
                             {...field}
                             type="text"
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                             placeholder="e.g., AWS Certified Solutions Architect"
                           />
                         )}
@@ -1514,7 +1514,7 @@ const ResumeBuilder = () => {
                           <input
                             {...field}
                             type="text"
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                             placeholder="e.g., Amazon Web Services"
                           />
                         )}
@@ -1532,7 +1532,7 @@ const ResumeBuilder = () => {
                           <input
                             {...field}
                             type="date"
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                           />
                         )}
                       />
@@ -1546,7 +1546,7 @@ const ResumeBuilder = () => {
                           <input
                             {...field}
                             type="date"
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                           />
                         )}
                       />
@@ -1560,7 +1560,7 @@ const ResumeBuilder = () => {
                           <input
                             {...field}
                             type="text"
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                             placeholder="e.g., AWS-123456"
                           />
                         )}
@@ -1575,7 +1575,7 @@ const ResumeBuilder = () => {
                           <input
                             {...field}
                             type="url"
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                             placeholder="https://verify.aws.com/cert/123456"
                           />
                         )}
@@ -1588,7 +1588,7 @@ const ResumeBuilder = () => {
             
             {/* Social Media */}
             <div>
-              <div className="flex justify-between items-center mb-4">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 space-y-3 sm:space-y-0">
                 <h3 className="text-lg font-medium text-gray-900">Social Media</h3>
                 <button
                   type="button"
@@ -1597,26 +1597,26 @@ const ResumeBuilder = () => {
                     url: '',
                     username: ''
                   })}
-                  className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600"
+                  className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 text-sm sm:text-base transition-colors"
                 >
                   Add Social Media
                 </button>
               </div>
               
               {watchedValues.socialMedia?.map((social, index) => (
-                <div key={index} className="border border-gray-200 rounded-lg p-4 mb-4">
-                  <div className="flex justify-between items-start mb-4">
+                <div key={index} className="border border-gray-200 rounded-lg p-4 sm:p-6 mb-4">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4 space-y-2 sm:space-y-0">
                     <h4 className="font-medium text-gray-900">Social Media {index + 1}</h4>
                     <button
                       type="button"
                       onClick={() => removeArrayItem('socialMedia', index)}
-                      className="text-red-600 hover:text-red-800"
+                      className="text-red-600 hover:text-red-800 text-sm sm:text-base self-start sm:self-auto"
                     >
                       Remove
                     </button>
                   </div>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">Platform</label>
                       <Controller
@@ -1625,7 +1625,7 @@ const ResumeBuilder = () => {
                         render={({ field }) => (
                           <select
                             {...field}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                           >
                             <option value="linkedin">LinkedIn</option>
                             <option value="github">GitHub</option>
@@ -1650,7 +1650,7 @@ const ResumeBuilder = () => {
                           <input
                             {...field}
                             type="text"
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                             placeholder={social.platform === 'linkedin' ? 'john-doe' : 
                                        social.platform === 'github' ? 'johndoe' :
                                        social.platform === 'twitter' ? '@johndoe' : 'username'}
@@ -1667,7 +1667,7 @@ const ResumeBuilder = () => {
                           <input
                             {...field}
                             type="url"
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base"
                             placeholder={social.platform === 'linkedin' ? 'https://linkedin.com/in/john-doe' :
                                        social.platform === 'github' ? 'https://github.com/johndoe' :
                                        social.platform === 'twitter' ? 'https://twitter.com/johndoe' : 'https://example.com'}
@@ -1705,22 +1705,22 @@ const ResumeBuilder = () => {
     return (
       <div className="space-y-6">
         {/* Header with back button */}
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center space-y-4 sm:space-y-0">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Your Resume Preview</h2>
-            <p className="text-gray-600">Here's how your resume looks with the {watchedValues.resumeStyle} template</p>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Your Resume Preview</h2>
+            <p className="text-sm sm:text-base text-gray-600">Here's how your resume looks with the {watchedValues.resumeStyle} template</p>
           </div>
-          <div className="flex space-x-4">
+          <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
             <button
               onClick={() => setShowPreview(false)}
-              className="px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50"
+              className="px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 text-sm sm:text-base transition-colors"
             >
               Edit Resume
             </button>
             {isEditing && (
               <button
                 onClick={() => setShowDeleteModal(true)}
-                className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
+                className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 text-sm sm:text-base transition-colors"
               >
                 Delete
               </button>
@@ -1728,7 +1728,7 @@ const ResumeBuilder = () => {
             <button
               onClick={handleSubmit(onSubmit)}
               disabled={isLoading}
-              className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base transition-colors"
             >
               {isLoading ? 'Saving...' : (isEditing ? 'Update Resume' : 'Save & Continue')}
             </button>
@@ -1737,7 +1737,7 @@ const ResumeBuilder = () => {
                 resumeId={id}
                 template={getBackendTemplate(watchedValues.resumeStyle)}
                 method="POST"
-                className="px-4 py-2"
+                className="px-4 py-2 text-sm sm:text-base"
                 onSuccess={() => console.log('PDF downloaded successfully')}
                 onError={(error) => console.error('PDF download failed:', error)}
               >
@@ -1748,13 +1748,13 @@ const ResumeBuilder = () => {
         </div>
 
         {/* Template Selector */}
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white rounded-lg shadow p-4 sm:p-6">
           <div className="mb-4">
             <h3 className="text-lg font-medium text-gray-900 mb-3">Change Resume Style</h3>
             <p className="text-gray-600 text-sm">Try different templates to see which one looks best for your resume</p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             {resumeStyles.map((style) => (
               <div
                 key={style.id}
@@ -1766,7 +1766,7 @@ const ResumeBuilder = () => {
                 onClick={() => setValue('resumeStyle', style.id)}
               >
                 <div className="text-center">
-                  <div className={`w-full h-20 rounded-lg mb-2 flex items-center justify-center transition-all duration-300 ${
+                  <div className={`w-full h-16 sm:h-20 rounded-lg mb-2 flex items-center justify-center transition-all duration-300 ${
                     style.id === 'modern' 
                       ? 'bg-gradient-to-br from-gray-800 to-gray-900'
                       : style.id === 'professional'
@@ -1776,7 +1776,7 @@ const ResumeBuilder = () => {
                       : 'bg-gradient-to-br from-gray-600 to-gray-800'
                   }`}>
                     <div className="text-center text-white">
-                      <div className={`w-8 h-10 bg-white rounded shadow-sm mx-auto mb-1 ${
+                      <div className={`w-6 sm:w-8 h-8 sm:h-10 bg-white rounded shadow-sm mx-auto mb-1 ${
                         style.id === 'modern' ? 'shadow-gray-200' 
                         : style.id === 'professional' ? 'shadow-blue-200'
                         : style.id === 'creative' ? 'shadow-purple-200'
@@ -1794,7 +1794,7 @@ const ResumeBuilder = () => {
         </div>
 
         {/* Template Preview */}
-        <div className="bg-white rounded-lg shadow-lg p-8">
+        <div className="bg-white rounded-lg shadow-lg p-4 sm:p-8">
           <TemplateComponent data={watchedValues} />
         </div>
       </div>
@@ -1808,18 +1808,18 @@ const ResumeBuilder = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {/* Progress Bar */}
           <div className="mb-8">
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 space-y-2 sm:space-y-0">
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">
+                <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
                   {isEditing ? 'Edit Resume' : 'Resume Builder'}
                 </h1>
-                <p className="text-gray-600">
+                <p className="text-sm sm:text-base text-gray-600">
                   {isEditing ? 'Update your professional resume' : `Step ${currentStep} of ${steps.length}: ${steps[currentStep - 1]?.name}`}
                 </p>
               </div>
               <div className="text-right">
-                <div className="text-sm text-gray-500">Progress</div>
-                <div className="text-lg font-semibold text-orange-600">{Math.round((currentStep / steps.length) * 100)}%</div>
+                <div className="text-xs sm:text-sm text-gray-500">Progress</div>
+                <div className="text-base sm:text-lg font-semibold text-orange-600">{Math.round((currentStep / steps.length) * 100)}%</div>
               </div>
             </div>
             
@@ -1832,7 +1832,7 @@ const ResumeBuilder = () => {
             </div>
             
             {/* Step Indicators */}
-            <div className="flex justify-between">
+            <div className="hidden sm:flex justify-between">
               {steps.map((step, index) => (
                 <div key={step.id} className="flex flex-col items-center flex-1">
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-all duration-300 ${
@@ -1865,6 +1865,86 @@ const ResumeBuilder = () => {
                 </div>
               ))}
             </div>
+
+            {/* Mobile Step Indicators */}
+            <div className="sm:hidden">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center space-x-3">
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-all duration-300 ${
+                    currentStep > 1 
+                      ? 'bg-orange-500 text-white shadow-lg' 
+                      : currentStep === 1 
+                      ? 'bg-orange-500 text-white ring-4 ring-orange-200 shadow-lg' 
+                      : 'bg-gray-200 text-gray-500'
+                  }`}>
+                    {currentStep > 1 ? (
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    ) : (
+                      1
+                    )}
+                  </div>
+                  <div>
+                    <div className={`text-sm font-medium ${
+                      currentStep >= 1 ? 'text-gray-900' : 'text-gray-500'
+                    }`}>
+                      {steps[0].name}
+                    </div>
+                    <div className={`text-xs ${
+                      currentStep >= 1 ? 'text-gray-600' : 'text-gray-400'
+                    }`}>
+                      {steps[0].description}
+                    </div>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <div className="text-xs text-gray-500">Step {currentStep} of {steps.length}</div>
+                </div>
+              </div>
+              
+              {/* Mobile Step Navigation */}
+              <div className="flex justify-between items-center bg-white rounded-lg border border-gray-200 p-3">
+                <button
+                  type="button"
+                  onClick={prevStep}
+                  disabled={currentStep === 1}
+                  className="flex items-center px-3 py-2 text-sm text-gray-600 hover:text-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                  Previous
+                </button>
+                
+                <div className="flex items-center space-x-2">
+                  {steps.map((step, index) => (
+                    <div
+                      key={step.id}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        currentStep > step.id 
+                          ? 'bg-orange-500' 
+                          : currentStep === step.id 
+                          ? 'bg-orange-500 ring-2 ring-orange-200' 
+                          : 'bg-gray-300'
+                      }`}
+                    />
+                  ))}
+                </div>
+                
+                <button
+                  type="button"
+                  onClick={nextStep}
+                  disabled={currentStep === steps.length}
+                  className="flex items-center px-3 py-2 text-sm text-gray-600 hover:text-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  Next
+                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+            </div>
           </div>
 
           {/* Main Content */}
@@ -1880,12 +1960,12 @@ const ResumeBuilder = () => {
                 </div>
                 
                 {/* Navigation Buttons */}
-                <div className="flex justify-between items-center mt-8 pt-6 border-t border-gray-200">
+                <div className="flex flex-col sm:flex-row justify-between items-center mt-8 pt-6 border-t border-gray-200 space-y-4 sm:space-y-0">
                   <button
                     type="button"
                     onClick={prevStep}
                     disabled={currentStep === 1}
-                    className="flex items-center px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+                    className="flex items-center px-4 sm:px-6 py-2 sm:py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 text-sm sm:text-base w-full sm:w-auto justify-center"
                   >
                     <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -1893,11 +1973,11 @@ const ResumeBuilder = () => {
                     Previous
                   </button>
                   
-                  <div className="flex space-x-4">
+                  <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 w-full sm:w-auto">
                     {currentStep < steps.length ? (
                       <button
                         type="submit"
-                        className="flex items-center px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-lg hover:from-orange-600 hover:to-orange-700 shadow-lg hover:shadow-xl transition-all duration-200"
+                        className="flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-lg hover:from-orange-600 hover:to-orange-700 shadow-lg hover:shadow-xl transition-all duration-200 text-sm sm:text-base w-full sm:w-auto"
                       >
                         Next
                         <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1909,7 +1989,7 @@ const ResumeBuilder = () => {
                         <button
                           type="button"
                           onClick={() => setShowPreview(true)}
-                          className="flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg hover:from-blue-600 hover:to-blue-700 shadow-lg hover:shadow-xl transition-all duration-200"
+                          className="flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg hover:from-blue-600 hover:to-blue-700 shadow-lg hover:shadow-xl transition-all duration-200 text-sm sm:text-base w-full sm:w-auto"
                         >
                           <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -1920,7 +2000,7 @@ const ResumeBuilder = () => {
                         <button
                           type="submit"
                           disabled={isLoading}
-                          className="flex items-center px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg hover:from-green-600 hover:to-green-700 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+                          className="flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg hover:from-green-600 hover:to-green-700 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 text-sm sm:text-base w-full sm:w-auto"
                         >
                           {isLoading ? (
                             <>

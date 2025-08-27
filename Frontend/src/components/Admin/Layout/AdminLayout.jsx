@@ -9,8 +9,7 @@ import {
   Bars3Icon,
   XMarkIcon,
   UserIcon,
-  ChevronDownIcon,
-  ArrowPathIcon
+  ChevronDownIcon
 } from '@heroicons/react/24/outline'
 import { adminService } from '../../../api'
 
@@ -36,13 +35,7 @@ const AdminLayout = ({ children, title = 'Admin Dashboard' }) => {
     navigate('/admin/login')
   }
 
-  const handleRefreshProfile = async () => {
-    const updatedUser = await adminService.refreshAdminUserData()
-    if (updatedUser) {
-      setAdminUser(updatedUser)
-      setProfileDropdownOpen(false)
-    }
-  }
+
 
   const isActiveRoute = (href) => {
     return location.pathname === href || location.pathname.startsWith(href + '/')
@@ -64,17 +57,7 @@ const AdminLayout = ({ children, title = 'Admin Dashboard' }) => {
     }
   }, [])
 
-  // Refresh admin user data on component mount
-  useEffect(() => {
-    const refreshAdminData = async () => {
-      const updatedUser = await adminService.refreshAdminUserData()
-      if (updatedUser) {
-        setAdminUser(updatedUser)
-      }
-    }
-    
-    refreshAdminData()
-  }, [])
+
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -172,8 +155,8 @@ const AdminLayout = ({ children, title = 'Admin Dashboard' }) => {
                     )}
                   </div>
                   
-                  {/* Admin Info */}
-                  <div className="text-sm text-left">
+                  {/* Admin Info - Hidden on mobile */}
+                  <div className="hidden md:block text-sm text-left">
                     <div className="font-medium text-gray-900">
                       {adminUser?.firstName && adminUser?.lastName 
                         ? `${adminUser.firstName} ${adminUser.lastName}`
@@ -199,13 +182,6 @@ const AdminLayout = ({ children, title = 'Admin Dashboard' }) => {
                       <UserIcon className="w-4 h-4 mr-3" />
                       View Profile
                     </Link>
-                    <button
-                      onClick={handleRefreshProfile}
-                      className="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      <ArrowPathIcon className="w-4 h-4 mr-3" />
-                      Refresh Profile
-                    </button>
                     {isSuperAdmin && (
                       <div className="px-4 py-2 text-xs text-purple-600 font-medium">
                         Super Admin

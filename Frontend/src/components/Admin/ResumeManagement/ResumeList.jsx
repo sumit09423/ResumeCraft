@@ -379,83 +379,88 @@ const ResumeList = () => {
     <AdminLayout title="Resume Management">
       <div className="space-y-6">
         {/* Header */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">Resumes</h1>
-            <p className="mt-1 text-sm text-gray-600">
+            <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Resumes</h1>
+            <p className="mt-1 text-xs sm:text-sm text-gray-600">
               Review and manage all user resumes
             </p>
           </div>
-          <div className="flex items-center space-x-3">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
             {selectedResumes.length > 0 && (
               <>
                 <button
                   onClick={handleBulkApprove}
                   disabled={loadingStates.bulkApproving}
-                  className={`inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50 disabled:cursor-not-allowed ${
+                  className={`inline-flex items-center px-3 sm:px-4 py-2 border border-transparent text-xs sm:text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50 disabled:cursor-not-allowed ${
                     loadingStates.bulkApproving ? 'cursor-not-allowed' : ''
                   }`}
                 >
                   {loadingStates.bulkApproving ? (
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-1 sm:mr-2"></div>
                   ) : (
-                    <CheckIcon className="h-4 w-4 mr-2" />
+                    <CheckIcon className="h-4 w-4 mr-1 sm:mr-2" />
                   )}
-                  {loadingStates.bulkApproving ? 'Approving...' : `Approve Selected (${selectedResumes.length})`}
+                  <span className="hidden sm:inline">{loadingStates.bulkApproving ? 'Approving...' : `Approve Selected (${selectedResumes.length})`}</span>
+                  <span className="sm:hidden">{loadingStates.bulkApproving ? 'Approving...' : `Approve (${selectedResumes.length})`}</span>
                 </button>
                 <button
                   onClick={handleBulkReject}
                   disabled={loadingStates.bulkRejecting}
-                  className={`inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:opacity-50 disabled:cursor-not-allowed ${
+                  className={`inline-flex items-center px-3 sm:px-4 py-2 border border-transparent text-xs sm:text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:opacity-50 disabled:cursor-not-allowed ${
                     loadingStates.bulkRejecting ? 'cursor-not-allowed' : ''
                   }`}
                 >
                   {loadingStates.bulkRejecting ? (
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-1 sm:mr-2"></div>
                   ) : (
-                    <XMarkIcon className="h-4 w-4 mr-2" />
+                    <XMarkIcon className="h-4 w-4 mr-1 sm:mr-2" />
                   )}
-                  {loadingStates.bulkRejecting ? 'Rejecting...' : `Reject Selected (${selectedResumes.length})`}
+                  <span className="hidden sm:inline">{loadingStates.bulkRejecting ? 'Rejecting...' : `Reject Selected (${selectedResumes.length})`}</span>
+                  <span className="sm:hidden">{loadingStates.bulkRejecting ? 'Rejecting...' : `Reject (${selectedResumes.length})`}</span>
                 </button>
                 <button
                   onClick={handleBulkDelete}
                   disabled={loadingStates.bulkDeleting}
-                  className={`inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:opacity-50 disabled:cursor-not-allowed ${
+                  className={`inline-flex items-center px-3 sm:px-4 py-2 border border-transparent text-xs sm:text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:opacity-50 disabled:cursor-not-allowed ${
                     loadingStates.bulkDeleting ? 'cursor-not-allowed' : ''
                   }`}
                 >
                   {loadingStates.bulkDeleting ? (
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-1 sm:mr-2"></div>
                   ) : (
-                    <TrashIcon className="h-4 w-4 mr-2" />
+                    <TrashIcon className="h-4 w-4 mr-1 sm:mr-2" />
                   )}
-                  {loadingStates.bulkDeleting ? 'Deleting...' : `Delete Selected (${selectedResumes.length})`}
+                  <span className="hidden sm:inline">{loadingStates.bulkDeleting ? 'Deleting...' : `Delete Selected (${selectedResumes.length})`}</span>
+                  <span className="sm:hidden">{loadingStates.bulkDeleting ? 'Deleting...' : `Delete (${selectedResumes.length})`}</span>
                 </button>
               </>
             )}
             <button
               onClick={() => handleExport('csv')}
               disabled={loadingStates.exporting}
-              className={`inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 disabled:opacity-50 disabled:cursor-not-allowed ${
+              className={`inline-flex items-center px-3 sm:px-4 py-2 border border-gray-300 shadow-sm text-xs sm:text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 disabled:opacity-50 disabled:cursor-not-allowed ${
                 loadingStates.exporting ? 'cursor-not-allowed' : ''
               }`}
             >
               {loadingStates.exporting ? (
-                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-gray-600 mr-2"></div>
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-gray-600 mr-1 sm:mr-2"></div>
               ) : null}
-              {loadingStates.exporting ? 'Exporting...' : 'Export CSV'}
+              <span className="hidden sm:inline">{loadingStates.exporting ? 'Exporting...' : 'Export CSV'}</span>
+              <span className="sm:hidden">{loadingStates.exporting ? 'Exporting...' : 'CSV'}</span>
             </button>
             <button
               onClick={() => handleExport('json')}
               disabled={loadingStates.exporting}
-              className={`inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 disabled:opacity-50 disabled:cursor-not-allowed ${
+              className={`inline-flex items-center px-3 sm:px-4 py-2 border border-gray-300 shadow-sm text-xs sm:text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 disabled:opacity-50 disabled:cursor-not-allowed ${
                 loadingStates.exporting ? 'cursor-not-allowed' : ''
               }`}
             >
               {loadingStates.exporting ? (
-                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-gray-600 mr-2"></div>
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-gray-600 mr-1 sm:mr-2"></div>
               ) : null}
-              {loadingStates.exporting ? 'Exporting...' : 'Export JSON'}
+              <span className="hidden sm:inline">{loadingStates.exporting ? 'Exporting...' : 'Export JSON'}</span>
+              <span className="sm:hidden">{loadingStates.exporting ? 'Exporting...' : 'JSON'}</span>
             </button>
           </div>
         </div>

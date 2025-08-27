@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { authService } from '../../api'
+import Header from '../Layout/Header'
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('')
@@ -58,30 +59,7 @@ const ForgotPassword = () => {
   if (isEmailSent) {
     return (
       <>
-        {/* Main Page Header */}
-        <header className="relative z-10 bg-white/95 backdrop-blur-sm border-b border-gray-100 sticky top-0">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center py-4">
-              <div className="flex items-center space-x-3">
-                <Link to="/" className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center border border-orange-300">
-                    <span className="text-white font-bold text-sm">R</span>
-                  </div>
-                  <h1 className="text-xl font-bold text-gray-900">
-                    ResumeCraft
-                  </h1>
-                </Link>
-              </div>
-              <nav className="hidden md:flex space-x-8">
-                <Link to="/" className="text-gray-600 hover:text-orange-500 font-medium transition-colors text-sm">Home</Link>
-                <Link to="/login" className="text-gray-600 hover:text-orange-500 font-medium transition-colors text-sm">Sign In</Link>
-              </nav>
-              <div className="flex items-center space-x-4">
-                <Link to="/login" className="btn-primary text-sm px-4 py-2">Sign In</Link>
-              </div>
-            </div>
-          </div>
-        </header>
+        <Header />
         
         <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-md">
