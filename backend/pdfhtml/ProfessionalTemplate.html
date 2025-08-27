@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professional Resume</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+  .resume-container {
+    max-width: 900px;
+    margin: 5px auto;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .header {
+    background: linear-gradient(to right, #2563eb, #1e3a8a);
+    color: #fff;
+    text-align: center;
+    padding: 20px 15px;
+  }
+  .header h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    word-break: break-word;
+  }
+  .header p {
+    font-size: 18px;
+    opacity: 0.9;
+    margin-bottom: 20px;
+    word-break: break-word;
+  }
+  .header .contact {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    font-size: 14px;
+  }
+  .header .contact div {
+    display: flex;
+    align-items: center;
+  }
+  .section {
+    padding: 15px 20px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .section:last-child {
+    border-bottom: none;
+  }
+  .section h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+  }
+  .section h2::before {
+    content: '';
+    width: 30px;
+    height: 4px;
+    background-color: #2563eb;
+    display: inline-block;
+    margin-right: 10px;
+  }
+  .section p {
+    color: #374151;
+    line-height: 1.6;
+    font-size: 16px;
+    margin: 0;
+    word-break: break-word;
+  }
+  .experience-item {
+    margin-bottom: 20px;
+    padding-left: 15px;
+    border-left: 4px solid #bfdbfe;
+  }
+  .experience-item h3 {
+    font-size: 18px;
+    margin: 0 0 5px;
+  }
+  .experience-item span {
+    font-size: 14px;
+    color: #2563eb;
+  }
+  .experience-item h4 {
+    font-size: 16px;
+    color: #2563eb;
+    margin: 5px 0;
+  }
+  .skills-list, .hobbies-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .skills-list span, .hobbies-list span {
+    background: #dbeafe;
+    color: #1e40af;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    border: 1px solid #bfdbfe;
+  }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .project-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 15px;
+  }
+  .project-card h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  .project-card p {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  .social-links div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .social-links a {
+    color: #2563eb;
+    text-decoration: none;
+    font-size: 14px;
+  }
+</style>
+</head>
+<body>
+
+<div class="resume-container">
+  <!-- Header -->
+  <div class="header">
+    <h1>John Doe</h1>
+    <p>Senior Software Engineer</p>
+    <div class="contact">
+      <div>Email: johndoe@example.com</div>
+      <div>Phone: +91 9876543210</div>
+      <div>Location: New Delhi, India</div>
+    </div>
+  </div>
+
+  <!-- About Me -->
+  <div class="section">
+    <h2>About Me</h2>
+    <p>Experienced software engineer with a passion for building scalable web applications and working across the full stack.</p>
+  </div>
+
+  <!-- Experience -->
+  <div class="section">
+    <h2>Experience</h2>
+    <div class="experience-item">
+      <h3>Senior Developer</h3>
+      <span>Jan 2020 - Present</span>
+      <h4>ABC Technologies</h4>
+      <p>Leading a team of developers to build enterprise-level applications using MERN stack.</p>
+      <ul>
+        <li>Developed high-performance APIs using Node.js.</li>
+        <li>Implemented responsive UI using React and Tailwind CSS.</li>
+      </ul>
+    </div>
+    <div class="experience-item">
+      <h3>Frontend Developer</h3>
+      <span>Jul 2018 - Dec 2019</span>
+      <h4>XYZ Solutions</h4>
+      <p>Worked on creating dynamic and responsive web pages for clients.</p>
+    </div>
+  </div>
+
+  <!-- Skills -->
+  <div class="section">
+    <h2>Skills</h2>
+    <div class="skills-list">
+      <span>JavaScript</span>
+      <span>React.js</span>
+      <span>Node.js</span>
+      <span>MongoDB</span>
+    </div>
+  </div>
+
+  <!-- Projects -->
+  <div class="section">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Project One</h3>
+        <p>A full-stack application built using MERN stack.</p>
+        <p><strong>Tech Stack:</strong> React, Node.js, MongoDB</p>
+        <a href="#">Code</a> | <a href="#">Demo</a>
+      </div>
+      <div class="project-card">
+        <h3>Project Two</h3>
+        <p>Responsive web app for managing workflows.</p>
+        <p><strong>Tech Stack:</strong> Vue.js, Firebase</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interests and Social -->
+  <div class="section">
+    <h2>Interests</h2>
+    <div class="hobbies-list">
+      <span>Photography</span>
+      <span>Travel</span>
+      <span>Reading</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Connect</h2>
+    <div class="social-links">
+      <div><a href="#">LinkedIn</a></div>
+      <div><a href="#">GitHub</a></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

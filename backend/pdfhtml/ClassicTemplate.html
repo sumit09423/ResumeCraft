@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Resume</title>
+<style>
+  body {
+    font-family: 'Jost', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+  }
+  .container {
+    padding: 15px;
+    margin: 5px auto;
+    max-width: 800px;
+    background: #f7f7f7;
+    border-radius: 16px;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 4px solid #d1d5db;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+  header h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #374151;
+    margin: 0;
+  }
+  header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #374151;
+    margin: 5px 0 0 10px;
+  }
+  header h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #6b7280;
+    margin: 8px 0 0 10px;
+  }
+  .initials {
+    background: #374151;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 900;
+    text-align: center;
+    padding: 24px;
+    line-height: 1.2;
+  }
+  section {
+    margin-bottom: 20px;
+    border-bottom: 4px solid #d1d5db;
+    padding-bottom: 10px;
+  }
+  section h2 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #374151;
+    margin-bottom: 10px;
+  }
+  section p, section li {
+    color: #374151;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 5px 0;
+  }
+  ul {
+    padding-left: 20px;
+  }
+  .skills ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+    padding-left: 0;
+  }
+  .skills li {
+    border: 1px solid #9ca3af;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    color: #374151;
+  }
+  .contact a {
+    text-decoration: none;
+    color: #374151;
+  }
+  .projects a {
+    color: #1f2937;
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+  <main class="container">
+    <!-- Header -->
+    <header>
+      <div>
+        <h1>John Doe</h1>
+        <h2>Full Stack Developer</h2>
+        <h3>New York, USA</h3>
+      </div>
+      <div class="initials">
+        <div>J</div>
+        <div>D</div>
+      </div>
+    </header>
+
+    <!-- Contact -->
+    <section class="contact">
+      <ul>
+        <li><strong>Portfolio:</strong> linkedin.com/in/johndoe</li>
+        <li><strong>Github:</strong> github.com/johndoe</li>
+        <li><strong>Email:</strong> johndoe@gmail.com</li>
+        <li><strong>Phone:</strong> +1 234-567-890</li>
+      </ul>
+    </section>
+
+    <!-- Summary -->
+    <section>
+      <h2>SUMMARY</h2>
+      <p>Experienced Full Stack Developer with expertise in React, Node.js, and MongoDB, passionate about building scalable web applications.</p>
+    </section>
+
+    <!-- Education -->
+    <section>
+      <h2>EDUCATION</h2>
+      <div>
+        <h3>XYZ University</h3>
+        <p>2016 – 2020 | B.Tech in Computer Science</p>
+        <ul>
+          <li><strong>Major:</strong> Computer Science</li>
+          <li><strong>GPA:</strong> 3.8</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="skills">
+      <h2>SKILLS</h2>
+      <ul>
+        <li>React.js</li>
+        <li>Node.js</li>
+        <li>MongoDB</li>
+        <li>TailwindCSS</li>
+        <li>Express.js</li>
+      </ul>
+    </section>
+
+    <!-- Experience -->
+    <section>
+      <h2>EXPERIENCE</h2>
+      <div>
+        <h3>Software Engineer</h3>
+        <p>Jan 2021 – Present | ABC Corp</p>
+        <ul>
+          <li>Developed scalable web apps using MERN stack.</li>
+          <li>Improved API response time by 30%.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="projects">
+      <h2>PROJECTS</h2>
+      <div>
+        <h3>Resume Builder App</h3>
+        <p>A web app to build resumes and export them as PDFs.</p>
+        <p><strong>Technologies:</strong> React, Node.js, MongoDB</p>
+        <ul>
+          <li><a href="#">GitHub Repository</a></li>
+          <li><a href="#">Live Demo</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
