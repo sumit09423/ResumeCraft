@@ -1,0 +1,419 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 border border-orange-500 transform hover:-translate-y-1;
+  }
+  
+  .btn-secondary {
+    @apply bg-white hover:bg-gray-50 text-gray-700 font-semibold py-2 px-4 rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 border border-gray-300 transform hover:-translate-y-1;
+  }
+  
+  .card-minimal {
+    @apply bg-white rounded-xl p-6 border border-gray-200 transition-all duration-300 hover:border-orange-300;
+  }
+  
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer utilities {
+  /* Custom orange color */
+  .bg-custom-orange {
+    background-color: #FF5C00;
+  }
+  
+  .text-custom-orange {
+    color: #FF5C00;
+  }
+  
+  .border-custom-orange {
+    border-color: #FF5C00;
+  }
+  
+  .hover\:bg-custom-orange:hover {
+    background-color: #E65100;
+  }
+  
+  .hover\:text-custom-orange:hover {
+    color: #FF5C00;
+  }
+  
+  .hover\:border-custom-orange:hover {
+    border-color: #FF5C00;
+  }
+  
+  /* Floating particles animation */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  /* Wave animation */
+  .animate-wave {
+    animation: wave 8s ease-in-out infinite;
+  }
+  
+  /* Slow spin animation */
+  .animate-spin-slow {
+    animation: spin 20s linear infinite;
+  }
+  
+  /* Slow pulse animation */
+  .animate-pulse-slow {
+    animation: pulse 4s ease-in-out infinite;
+  }
+  
+  /* Slow bounce animation */
+  .animate-bounce-slow {
+    animation: bounce 3s ease-in-out infinite;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent;
+  }
+  
+  .bg-glass {
+    @apply bg-white/80 backdrop-blur-md border border-gray-200;
+  }
+  
+  /* Resume Builder specific styles */
+  .fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .hover-lift {
+    transition: all 0.3s ease;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-2px);
+  }
+  
+  .glow-orange {
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
+  }
+  
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+    opacity: 0.8;
+  }
+}
+
+/* Wave animation */
+@keyframes wave {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-10px);
+  }
+}
+
+/* Slow spin */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Slow pulse */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.1);
+  }
+}
+
+/* Slow bounce */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FF5C00;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #E65100;
+}
+
+/* Smooth animations for elements */
+.fade-in {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hover effects with borders instead of shadows */
+.hover-lift {
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  border-color: #FF5C00;
+}
+
+/* Minimal glow effects */
+.glow {
+  box-shadow: 0 0 20px rgba(255, 92, 0, 0.1);
+}
+
+.glow-orange {
+  box-shadow: 0 0 20px rgba(255, 92, 0, 0.2);
+}
+
+/* Additional Vanta-like effects */
+.particle {
+  position: absolute;
+  background: rgba(255, 92, 0, 0.1);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.geometric-shape {
+  position: absolute;
+  border: 2px solid rgba(255, 92, 0, 0.2);
+  pointer-events: none;
+}
+
+/* Custom orange color variables */
+:root {
+  --custom-orange: #FF5C00;
+  --custom-orange-dark: #E65100;
+  --custom-orange-light: #FF8A50;
+  --custom-orange-lighter: #FFE0CC;
+}
+
+/* Classic Template Styles */
+.font-jost {
+  font-family: 'Jost', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Print styles for classic template */
+@media print {
+  .print\:max-w-letter {
+    max-width: 8.5in;
+  }
+  
+  .print\:max-h-letter {
+    max-height: 11in;
+  }
+  
+  .print\:mx-0 {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  .print\:my-0 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  
+  .print\:bg-white {
+    background-color: white;
+  }
+  
+  .print\:border-0 {
+    border: 0;
+  }
+  
+  .print\:col-count-2 {
+    column-count: 2;
+  }
+  
+  .print\:h-letter-col-full {
+    height: 11in;
+  }
+  
+  .print\:font-normal {
+    font-weight: normal;
+  }
+  
+  .print\:bg-black {
+    background-color: black;
+  }
+  
+  .print\:text-black {
+    color: black;
+  }
+  
+  .print\:border-inset {
+    border: 1px inset;
+  }
+}
+
+/* Letter size styles */
+.md\:max-w-letter {
+  max-width: 8.5in;
+}
+
+.md\:h-letter {
+  height: 11in;
+}
+
+.lg\:h-letter {
+  height: 11in;
+}
+
+/* Column layout styles */
+.col-gap-8 {
+  column-gap: 2rem;
+}
+
+.col-fill-balance {
+  column-fill: balance;
+}
+
+.md\:col-count-2 {
+  column-count: 2;
+}
+
+.md\:h-letter-col-full {
+  height: 11in;
+}
+
+/* Break inside avoid */
+.break-inside-avoid {
+  break-inside: avoid;
+}
+
+/* Leading snugish */
+.leading-snugish {
+  line-height: 1.375;
+}
+
+/* Initials container */
+.initials-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.initial {
+  display: block;
+}
+
+/* Additional classes for classic template */
+.hyphens-manual {
+  hyphens: manual;
+}
+
+.page {
+  page-break-after: always;
+}
+
+.xsm\:p-8 {
+  padding: 2rem;
+}
+
+/* List styling */
+.list-inside {
+  list-style-position: inside;
+}
+
+.list-disc {
+  list-style-type: disc;
+}
+
+/* Print specific styles */
+.print\:my-o {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Font weight utilities */
+.font-black {
+  font-weight: 900;
+}
+
+/* Negative margins for skills */
+.-mb-1 {
+  margin-bottom: -0.25rem;
+}
+
+.-mr-1\.6 {
+  margin-right: -0.4rem;
+}
+
+/* Last child utilities */
+.last\:pb-1:last-child {
+  padding-bottom: 0.25rem;
+}

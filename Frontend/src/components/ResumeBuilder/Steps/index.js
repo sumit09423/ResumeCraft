@@ -1,0 +1,6 @@
+export { default as ResumeStyleStep } from './ResumeStyleStep'
+export { default as PersonalInfoStep } from './PersonalInfoStep'
+export { default as ExperienceStep } from './ExperienceStep'
+export { default as ProjectsStep } from './ProjectsStep'
+export { default as SkillsStep } from './SkillsStep'
+export { default as AdditionalStep } from './AdditionalStep'
